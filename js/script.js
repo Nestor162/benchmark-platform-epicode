@@ -7,7 +7,23 @@ tag.append(img);
 
 //////
 
+//welcome page
+let h1 = document.createElement("h1");
+tag.append(h1);
+document.querySelector("h1").innerHTML = "Welcome to your exam";
 
+//bottone "proceed"
+let button = document.createElement("button");
+button.innerHTML = "proceed".toUpperCase();
+button.className = 'button';
+
+tag.append(button);
+
+button.addEventListener ("click", function() {
+    console.log("yo");
+});
+
+//quiz
 class Quiz {
     constructor(_category, _type, _difficulty, _question, _correct, _incorrect, _time) {
 
