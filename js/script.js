@@ -1,3 +1,13 @@
+//IMG
+let img = document.createElement('img');
+img.src = 'assets/img/epicode_logo.png';
+let tag = document.querySelector("body");
+img.className += 'logo'
+tag.append(img);
+
+//////
+
+
 class Quiz {
     constructor(_category, _type, _difficulty, _question, _correct, _incorrect, _time) {
 
