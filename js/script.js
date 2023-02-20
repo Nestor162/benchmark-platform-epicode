@@ -8,8 +8,14 @@ tag.append(img);
 
 //welcome page
 let h1 = document.createElement("h1");
+let span = document.createElement("span");
+
+h1.innerHTML = "Welcome to ";
+span.innerHTML = "your exam";
+
 tag.append(h1);
-document.querySelector("h1").innerHTML = "Welcome to your exam";
+h1.append(span);
+
 
 
 
@@ -25,6 +31,51 @@ tag.append(button);
 button.addEventListener("click", function () {
     console.log("yo");
 });
+
+
+
+//instructions
+
+let h3 = document.createElement('h3');
+h3.textContent = 'Instructions';
+tag.append(h3);
+
+
+
+
+////LISTA 
+
+let listaLi = ['Each question is timed and can only be answered once.',
+
+    'Changing browser tab or opening other windows will invalidate the question.',
+
+    'This exam will take approx. 0-5 minutes.'
+]
+
+let lista = document.createElement('ul');
+tag.append(lista)
+
+listaLi.forEach((list) => {
+    let li = document.createElement('li')
+    li.innerHTML = list.replace(/(timed|answered once|invalidate the question|0-5 minutes)/g, "<span>$1</span>");
+    lista.append(li);
+    li.className += 'lista'
+
+})
+
+//Checkbox & termini e condizioni
+let check = document.createElement("input");
+let txtCheck = document.createElement('label');
+txtCheck.textContent = ('promise to answer myself without help from anyone');
+check.setAttribute("type", "checkbox");
+
+let divCheck = document.createElement('div');
+divCheck.classList.add('container-check');
+divCheck.append(check);
+divCheck.append(txtCheck);
+
+tag.append(divCheck);
+
 
 //////////QUIZ/////////////////
 
@@ -60,5 +111,97 @@ let quiz8 = new Quiz("Science: Computers", "multiple", "easy", "On Twitter, what
 
 let quiz9 = new Quiz("Science: Computers", "boolean", "easy", "Linux was first created as an alternative to Windows XP.", "False", ["True"], 18);
 
-
 let quiz10 = new Quiz("Science: Computers", "multiple", "easy", "Which programming language shares its name with an island in Indonesia?", "Java", ["Python", "C", "Jakarta"], 30);
+
+
+
+let quizQuest = [quiz1, quiz2, quiz3, quiz4, quiz5, quiz6, quiz7, quiz8, quiz9, quiz10];
+
+/*function getRandomQuiz(){
+    let output = [];
+
+    quizQuest.forEach((question, questionNumber) => {
+        let answers = [];
+
+        for (letter in question.)
+    }
+)}*/
+
+
+function getRandomQuiz(n) {
+    let output = [];
+    let usedQuestions = []; // array di domande già usate
+
+    // ciclo finché non si sono aggiunte tutte le domande richieste
+    while (output.length < n) {
+        // scegli un indice casuale
+        let randomIndex = Math.floor(Math.random() * quizQuest.length);
+
+        // se la domanda non è già stata usata, la aggiungiamo all'output
+        if (!usedQuestions.includes(randomIndex)) {
+            usedQuestions.push(randomIndex);
+            output.push(quizQuest[randomIndex]);
+        }
+    }
+
+    return output;
+}
+
+console.log(getRandomQuiz(5));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
