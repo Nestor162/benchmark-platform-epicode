@@ -12,8 +12,7 @@ button.innerHTML = "proceed".toUpperCase();
 
 button.className = 'button'
 
-let body = document.getElementsByTagName("body")[0];
-body.append(button);
+tag.append(button);
 
 button.addEventListener ("click", function() {
     console.log("yo");
