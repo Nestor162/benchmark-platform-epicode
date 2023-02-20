@@ -10,3 +10,18 @@ body{
     margin-left: 5%;
     margin-right: 5%;
 }
+
+.button{
+    line-height: 7vh;
+    font-weight: bold;
+    padding: 0 40px;
+    background: #00FFFF;
+    border: none;
+    font-size: large;
+}
+    
+button:hover {
+    color: black;
+    background: #00FFFF;
+    filter: drop-shadow(0 0 20px #00FFFF) contrast(5) brightness(5);
+}

@@ -5,7 +5,21 @@ let tag = document.querySelector("body");
 img.className += 'logo'
 tag.append(img);
 
-//////
+////// BOTTONE WELCOME PAGE ////
+
+let button = document.createElement("button");
+button.innerHTML = "proceed".toUpperCase();
+
+button.className = 'button'
+
+let body = document.getElementsByTagName("body")[0];
+body.append(button);
+
+button.addEventListener ("click", function() {
+    console.log("yo");
+});
+
+//////////QUIZ/////////////////
 
 
 class Quiz {
