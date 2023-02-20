@@ -5,6 +5,14 @@ let tag = document.querySelector("body");
 img.className += 'logo'
 tag.append(img);
 
+
+//welcome page
+let h1 = document.createElement("h1");
+tag.append(h1);
+document.querySelector("h1").innerHTML = "Welcome to your exam";
+
+
+
 ////// BOTTONE WELCOME PAGE ////
 
 let button = document.createElement("button");
@@ -14,7 +22,7 @@ button.className = 'button'
 
 tag.append(button);
 
-button.addEventListener ("click", function() {
+button.addEventListener("click", function () {
     console.log("yo");
 });
 
