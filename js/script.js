@@ -67,7 +67,7 @@ tag.append(button);
 
 
 button.addEventListener("click", function () {
-    window.location.href = '#';
+    window.location.href = 'slide2.js';
 });
 
 
@@ -91,19 +91,6 @@ check.addEventListener('change', function () {
         button.disabled = true;
     }
 });
-
-
-
-
-/////spunta checkbox
-button.disabled = true
-check.addEventListener('change', function() {
-    if (check.checked) {
-    button. disabled = true;
-    } else {
-    button. disabled = false;
-    }
-    });
 
 
 
