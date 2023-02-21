@@ -281,12 +281,12 @@ function createBenchPage() {
     let domandeRandom = getRandomQuiz(5);
     function printQuiz() {
         //struttura dei radio buttons
+        indexDomanda = 0;
         let fieldset = document.createElement("fieldset");
         tag.append(fieldset);
         let domanda = document.createElement("legend");
+        domanda.textContent = domandeRandom[indexDomanda].question;
         fieldset.prepend(domanda);
-
-        indexDomanda = 0;
         //si crea un nuovo array con tutte le domande (corrette e non)
         let allAnswer = [...domandeRandom[indexDomanda].incorrect];
         allAnswer.push(domandeRandom[indexDomanda].correct);
