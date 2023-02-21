@@ -278,7 +278,7 @@ function getRandomQuiz(n) {
 
 function createBenchPage() {
     createImg();
-    let domande = getRandomQuiz(5);
+    let domandeRandom = getRandomQuiz(5);
     function printQuiz() {
         //struttura dei radio buttons
         let fieldset = document.createElement("fieldset");
@@ -286,13 +286,12 @@ function createBenchPage() {
         let domanda = document.createElement("legend");
         fieldset.prepend(domanda);
 
-        domandaAttuale = 0;
-        domanda.innerText = domande[domandaAttuale].question;
+        indexDomanda = 0;
+        //si crea un nuovo array con tutte le domande (corrette e non)
+        let allAnswer = [...domandeRandom[indexDomanda].incorrect];
+        allAnswer.push(domandeRandom[indexDomanda].correct);
 
-        let allAnswer = [];
-        allAnswer.push(domande[domandaAttuale].correct);
-        for (risposta of domande[domandaAttuale].incorrect) {
-            allAnswer.push(risposta);
+        for (risposta of allAnswer) {
             let input = document.createElement("input");
             let risposte = document.createElement("label");
             let div = document.createElement("div");
@@ -302,7 +301,7 @@ function createBenchPage() {
             div.append(risposte);
             fieldset.append(div);
         }
-        domandaAttuale++;
+        indexDomanda++;
     }
     printQuiz();
 }
