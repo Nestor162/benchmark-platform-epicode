@@ -1,8 +1,8 @@
 body {
-    background-image: url('../assets/img/bg.jpg');
+    background-image: url("../assets/img/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-
+    height: 100vh;
 }
 
 .logo {
@@ -13,25 +13,19 @@ body {
     cursor: pointer;
 }
 
-
-
 h1 {
-
     font-size: 60px;
     color: white;
-    margin: 7rem 7rem auto;
+    margin: 4rem 7rem auto;
     max-width: 25rem;
-    font-family: 'Outfit', sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 h1 span {
     font-weight: bold;
 }
 
-
-
 h3 {
-
     font-size: 40px;
     color: white;
     width: 50%;
@@ -46,18 +40,16 @@ h3 {
     font-size: 16px;
     margin-bottom: 4rem;
     margin-top: 1rem;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.5rem;
 }
-
-
 
 .button {
     color: black;
     line-height: 3rem;
     font-weight: bold;
     padding: 0 45px;
-    background: #00FFFF;
+    background: #00ffff;
     border: none;
     font-size: large;
     display: flex;
@@ -70,13 +62,11 @@ h3 {
 
 button:hover {
     color: black;
-    background: #00FFFF;
-    filter: drop-shadow(0 0 20px #00FFFF) contrast(5) brightness(5);
+    background: #00ffff;
+    filter: drop-shadow(0 0 20px #00ffff) contrast(5) brightness(5);
 }
 
 .container-check {
-    display: flex;
-    position: absolute;
     left: 6rem;
     color: white;
     font-weight: bold;
@@ -96,7 +86,7 @@ input {
 
 label {
     margin-left: 1rem;
-
+    font-family: "Inter", sans-serif;
 }
 
 /*css lista*/
@@ -108,11 +98,16 @@ label {
     font-size: 16px;
     margin-top: 1.2rem;
     list-style-type: disc;
-    font-family: 'Inter', sans-serif;
-
+    font-family: "Inter", sans-serif;
 }
 
 li span {
     font-weight: bold;
     font-size: 16px;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
 }
