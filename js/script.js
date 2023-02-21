@@ -295,6 +295,7 @@ function createBenchPage() {
 
         for (risposta of allAnswer) {
             let input = document.createElement("input");
+            input.setAttribute("name", "answer");
             let risposte = document.createElement("label");
             let div = document.createElement("div");
             input.setAttribute("type", "radio");
