@@ -7,6 +7,7 @@ body {
     background-image: url('../assets/img/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 .logo {
@@ -14,63 +15,62 @@ body {
     margin-top: 3%;
     margin-left: 5%;
     margin-right: 5%;
-
+    cursor: pointer;
 }
 
 
 
 h1 {
 
-    font-size: 5rem;
+    font-size: 60px;
     color: white;
-    font-family: 'Outfit', serif;
-    width: 50%;
-    margin: 0 auto;
-    font-size: 5rem;
-    color: white;
-    font-family: 'Outfit', serif;
-    width: 50%;
+    margin: 7rem 7rem auto;
+    max-width: 25rem;
+    font-family: 'Outfit', sans-serif;
+}
+
+h1 span {
     font-weight: bold;
-    margin-bottom: 6rem;
 }
 
 
 
 h3 {
 
-    font-size: 2.5rem;
+    font-size: 40px;
     color: white;
-    font-family: 'Outfit', serif;
     width: 50%;
     color: rgb(248, 54, 248);
     font-weight: bold;
     margin-left: 7rem;
+    margin-top: 3rem;
 }
 
 .parag {
     color: white;
-    font-size: 1.5rem;
+    font-size: 16px;
     margin-bottom: 4rem;
     margin-top: 1rem;
-
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5rem;
 }
 
 
 
 .button {
+    color: black;
     line-height: 3rem;
     font-weight: bold;
     padding: 0 45px;
     background: #00FFFF;
     border: none;
     font-size: large;
-    margin: 0 auto;
     display: flex;
-    position: absolute;
-    bottom: 8rem;
-    right: 10rem;
     box-shadow: 2px 2px 29px 2px aqua;
-
+    float: right;
+    margin-right: 5rem;
+    margin-top: 4rem;
+    cursor: pointer;
 }
 
 button:hover {
@@ -82,11 +82,11 @@ button:hover {
 .container-check {
     display: flex;
     position: absolute;
-    bottom: 8rem;
-    left: 10rem;
+    left: 6rem;
     color: white;
     font-weight: bold;
-
+    margin-top: 5rem;
+    cursor: pointer;
 }
 
 input {
@@ -96,7 +96,7 @@ input {
     outline: none;
     margin: 0 auto;
     background-color: blue;
-
+    cursor: pointer;
 }
 
 label {
@@ -107,11 +107,14 @@ label {
 /*css lista*/
 
 .lista {
-    margin-left: 7rem;
+    margin-left: 9rem;
     /*numero approssimativo*/
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 16px;
     margin-top: 1.2rem;
+    list-style-type: disc;
+    font-family: 'Inter', sans-serif;
+
 }
 
 li span {
