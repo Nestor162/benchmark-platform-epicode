@@ -75,8 +75,20 @@ let divCheck = document.createElement('div');
 divCheck.classList.add('container-check');
 divCheck.append(check);
 divCheck.append(txtCheck);
-
 tag.append(divCheck);
+
+
+
+/////spunta checkbox
+button.disabled = true
+check.addEventListener('change', function() {
+    if (check.checked) {
+    button. disabled = true;
+    } else {
+    button. disabled = false;
+    }
+    });
+
 
 
 //////////QUIZ/////////////////
