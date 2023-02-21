@@ -2,7 +2,7 @@ body {
     background-image: url('../assets/img/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-
+    height: 100vh;
 }
 
 .logo {
@@ -19,7 +19,7 @@ h1 {
 
     font-size: 60px;
     color: white;
-    margin: 7rem 7rem auto;
+    margin: 4rem 7rem auto;
     max-width: 25rem;
     font-family: 'Outfit', sans-serif;
 }
