@@ -15,9 +15,9 @@ body {
 
 
 h1 {
-    max-width: 30rem;
+    max-width: 25rem;
     margin: 7rem 7rem auto;
-    font-size: 5rem;
+    font-size: 60px;
     color: white;
     font-family: 'Outfit', serif;
     margin-bottom: 3rem;
@@ -31,7 +31,7 @@ h1 span{
 
 h3 {
 
-    font-size: 2.5rem;
+    font-size: 40px;
     color: white;
     font-family: 'Outfit', serif;
     width: 50%;
@@ -41,16 +41,17 @@ h3 {
 }
 
 h3 p{
-    font-size: 1.2rem;
+    font-size: 16px;
     font-weight: 400;
 }
 
 .parag {
     color: white;
-    font-size: 1.5rem;
+    font-size: 16px;
     margin-bottom: 4rem;
     margin-top: 1rem;
     font-family: 'Inter', sans-serif;
+    line-height: 1.5rem;
 }
 
 
@@ -62,13 +63,12 @@ h3 p{
     background: #00FFFF;
     border: none;
     font-size: large;
-    margin: 0 auto;
     display: flex;
     position: absolute;
-    bottom: 20rem;
+    margin-top: 20rem;
     right: 10rem;
     box-shadow: 2px 2px 29px 2px aqua;
-
+    color: black;
 }
 
 button:hover {
@@ -80,7 +80,7 @@ button:hover {
 .container-check {
     display: flex;
     position: absolute;
-    bottom: 20rem;
+    margin-top: 5rem;
     left: 6rem;
     color: white;
     font-weight: bold;
@@ -108,13 +108,14 @@ label {
     margin-left: 7rem;
     /*numero approssimativo*/
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 16px;
     margin-top: 1.2rem;
+    margin-left: 9rem;
     list-style-type: disc;
     font-family: 'Inter', sans-serif;
 }
 
 li span {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 16px;
 }

@@ -19,18 +19,7 @@ h1.append(span);
 
 
 
-////// BOTTONE WELCOME PAGE ////
 
-let button = document.createElement("button");
-button.innerHTML = "proceed".toUpperCase();
-
-button.className = 'button'
-
-tag.append(button);
-
-button.addEventListener("click", function () {
-    console.log("yo");
-});
 
 
 
@@ -68,6 +57,20 @@ listaLi.forEach((list) => {
 
 })
 
+////// BOTTONE WELCOME PAGE ////
+
+let button = document.createElement("button");
+button.innerHTML = "proceed".toUpperCase();
+button.className = 'button';
+
+
+
+tag.append(button);
+
+button.addEventListener("click", function () {
+    console.log("yo");
+});
+
 //Checkbox & termini e condizioni
 let check = document.createElement("input");
 let txtCheck = document.createElement('label');
@@ -80,6 +83,16 @@ divCheck.append(check);
 divCheck.append(txtCheck);
 
 tag.append(divCheck);
+
+
+button.disabled = true;
+check.addEventListener('change', function() {
+    if (check.checked) {
+    button. disabled = false;
+    } else {
+    button. disabled = true;
+    }
+    });
 
 
 //////////QUIZ/////////////////
