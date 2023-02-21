@@ -280,15 +280,27 @@ function createBenchPage() {
     createImg();
     let domande = getRandomQuiz(5);
     function printQuiz() {
-        let domanda = document.createElement("h3");
+        //struttura dei radio buttons
+        let fieldset = document.createElement("fieldset");
+        tag.append(fieldset);
+        let domanda = document.createElement("legend");
+        fieldset.prepend(domanda);
 
         domandaAttuale = 0;
         domanda.innerText = domande[domandaAttuale].question;
-        tag.append(domanda);
+
+        let allAnswer = [];
+        allAnswer.push(domande[domandaAttuale].correct);
         for (risposta of domande[domandaAttuale].incorrect) {
-            let risposte = document.createElement("div");
+            allAnswer.push(risposta);
+            let input = document.createElement("input");
+            let risposte = document.createElement("label");
+            let div = document.createElement("div");
+            input.setAttribute("type", "radio");
             risposte.innerText = risposta;
-            tag.append(risposte);
+            div.append(input);
+            div.append(risposte);
+            fieldset.append(div);
         }
         domandaAttuale++;
     }
