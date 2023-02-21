@@ -1,6 +1,6 @@
 body {
     background-image: url("../assets/img/bg.jpg");
-    background-repeat: no-repeat;
+
     background-size: cover;
     height: 100vh;
 }
@@ -68,12 +68,11 @@ button:hover {
 }
 
 .container-check {
-
     color: white;
     font-weight: bold;
     margin-top: 5rem;
-    margin-left: 7.5rem;
     cursor: pointer;
+    margin-left: 7.5rem;
 }
 
 input {
@@ -110,6 +109,6 @@ li span {
 
 .btnContainer {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-around;
     flex-direction: row-reverse;
 }
