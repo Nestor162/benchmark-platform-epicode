@@ -1,7 +1,8 @@
 body {
-    background-image: url('../assets/img/bg.jpg');
+    background-image: url("../assets/img/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 }
 
 .logo {
@@ -9,40 +10,29 @@ body {
     margin-top: 3%;
     margin-left: 5%;
     margin-right: 5%;
-
+    cursor: pointer;
 }
-
-
 
 h1 {
-    max-width: 25rem;
-    margin: 7rem 7rem auto;
     font-size: 60px;
     color: white;
-    font-family: 'Outfit', serif;
-    margin-bottom: 3rem;
+    margin: 4rem 7rem auto;
+    max-width: 25rem;
+    font-family: "Outfit", sans-serif;
 }
 
-h1 span{
+h1 span {
     font-weight: bold;
 }
 
-
-
 h3 {
-
     font-size: 40px;
     color: white;
-    font-family: 'Outfit', serif;
     width: 50%;
     color: rgb(248, 54, 248);
     font-weight: bold;
     margin-left: 7rem;
-}
-
-h3 p{
-    font-size: 16px;
-    font-weight: 400;
+    margin-top: 3rem;
 }
 
 .parag {
@@ -50,41 +40,38 @@ h3 p{
     font-size: 16px;
     margin-bottom: 4rem;
     margin-top: 1rem;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.5rem;
 }
 
-
-
 .button {
+    color: black;
     line-height: 3rem;
     font-weight: bold;
     padding: 0 45px;
-    background: #00FFFF;
+    background: #00ffff;
     border: none;
     font-size: large;
     display: flex;
-    position: absolute;
-    margin-top: 20rem;
-    right: 10rem;
     box-shadow: 2px 2px 29px 2px aqua;
-    color: black;
+    float: right;
+    margin-right: 5rem;
+    margin-top: 4rem;
+    cursor: pointer;
 }
 
 button:hover {
     color: black;
-    background: #00FFFF;
-    filter: drop-shadow(0 0 20px #00FFFF) contrast(5) brightness(5);
+    background: #00ffff;
+    filter: drop-shadow(0 0 20px #00ffff) contrast(5) brightness(5);
 }
 
 .container-check {
-    display: flex;
-    position: absolute;
-    margin-top: 5rem;
     left: 6rem;
     color: white;
     font-weight: bold;
-
+    margin-top: 5rem;
+    cursor: pointer;
 }
 
 input {
@@ -94,28 +81,33 @@ input {
     outline: none;
     margin: 0 auto;
     background-color: blue;
-
+    cursor: pointer;
 }
 
 label {
     margin-left: 1rem;
-
+    font-family: "Inter", sans-serif;
 }
 
 /*css lista*/
 
 .lista {
-    margin-left: 7rem;
+    margin-left: 9rem;
     /*numero approssimativo*/
     color: #fff;
     font-size: 16px;
     margin-top: 1.2rem;
-    margin-left: 9rem;
     list-style-type: disc;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 li span {
     font-weight: bold;
     font-size: 16px;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
 }
