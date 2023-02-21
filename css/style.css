@@ -9,17 +9,10 @@ body {
     margin-top: 3%;
     margin-left: 5%;
     margin-right: 5%;
+
 }
 
 
-span {
-    margin: 0 auto;
-    font-size: 5rem;
-    color: white;
-    font-family: 'Outfit', serif;
-    width: 50%;
-    font-weight: bold;
-}
 
 h1 {
 
@@ -27,10 +20,13 @@ h1 {
     color: white;
     font-family: 'Outfit', serif;
     width: 50%;
-}
-
-span {
+    margin: 0 auto;
+    font-size: 5rem;
+    color: white;
+    font-family: 'Outfit', serif;
+    width: 50%;
     font-weight: bold;
+    margin-bottom: 6rem;
 }
 
 
@@ -43,6 +39,15 @@ h3 {
     width: 50%;
     color: rgb(248, 54, 248);
     font-weight: bold;
+    margin-left: 7rem;
+}
+
+.parag {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 4rem;
+    margin-top: 1rem;
+
 }
 
 
@@ -97,13 +102,16 @@ label {
 /*css lista*/
 
 .lista {
-    margin-left: 5%;
+    margin-left: 7rem;
     /*numero approssimativo*/
     color: #fff;
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
 }
 
 li span {
     font-weight: bold;
+    font-size: 1.4rem;
 }
 
 ul li::marker {

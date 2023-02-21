@@ -40,8 +40,10 @@ let h3 = document.createElement('h3');
 h3.textContent = 'Instructions';
 tag.append(h3);
 
-
-
+let p = document.createElement('p');
+p.textContent = 'We don\'t expect most engineers to know the answers to all of these <br> questions, so don\'t worry if you\'re unsure of a few of them.'
+h3.appendChild(p);
+p.classList.add('parag');
 
 ////LISTA 
 
