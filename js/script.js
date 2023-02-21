@@ -67,7 +67,7 @@ tag.append(button);
 
 
 button.addEventListener("click", function () {
-    console.log("yo");
+    window.location.href = '#';
 });
 
 

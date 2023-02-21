@@ -2,6 +2,7 @@ body {
     background-image: url('../assets/img/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 .logo {
@@ -9,7 +10,7 @@ body {
     margin-top: 3%;
     margin-left: 5%;
     margin-right: 5%;
-
+    cursor: pointer;
 }
 
 
@@ -20,6 +21,7 @@ h1 {
     color: white;
     margin: 7rem 7rem auto;
     max-width: 25rem;
+    font-family: 'Outfit', sans-serif;
 }
 
 h1 span {
@@ -63,7 +65,7 @@ h3 {
     float: right;
     margin-right: 5rem;
     margin-top: 4rem;
-
+    cursor: pointer;
 }
 
 button:hover {
@@ -79,6 +81,7 @@ button:hover {
     color: white;
     font-weight: bold;
     margin-top: 5rem;
+    cursor: pointer;
 }
 
 input {
@@ -88,7 +91,7 @@ input {
     outline: none;
     margin: 0 auto;
     background-color: blue;
-
+    cursor: pointer;
 }
 
 label {
