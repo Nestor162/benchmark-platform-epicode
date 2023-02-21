@@ -41,7 +41,10 @@ h3.textContent = 'Instructions';
 tag.append(h3);
 
 let p = document.createElement('p');
-p.textContent = 'We don\'t expect most engineers to know the answers to all of these <br> questions, so don\'t worry if you\'re unsure of a few of them.'
+p.innerHTML =
+    "We don't expect most engineers to know the answers to all of these" +
+    "<br>" +
+    "questions, so don't worry if you're unsure of a few of them.";
 h3.appendChild(p);
 p.classList.add('parag');
 
@@ -68,7 +71,7 @@ listaLi.forEach((list) => {
 //Checkbox & termini e condizioni
 let check = document.createElement("input");
 let txtCheck = document.createElement('label');
-txtCheck.textContent = ('promise to answer myself without help from anyone');
+txtCheck.textContent = ('I promise to answer myself without help from anyone');
 check.setAttribute("type", "checkbox");
 
 let divCheck = document.createElement('div');

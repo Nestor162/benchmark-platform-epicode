@@ -15,18 +15,16 @@ body {
 
 
 h1 {
+    max-width: 30rem;
+    margin: 7rem 7rem auto;
+    font-size: 5rem;
+    color: white;
+    font-family: 'Outfit', serif;
+    margin-bottom: 3rem;
+}
 
-    font-size: 5rem;
-    color: white;
-    font-family: 'Outfit', serif;
-    width: 50%;
-    margin: 0 auto;
-    font-size: 5rem;
-    color: white;
-    font-family: 'Outfit', serif;
-    width: 50%;
+h1 span{
     font-weight: bold;
-    margin-bottom: 6rem;
 }
 
 
@@ -42,12 +40,17 @@ h3 {
     margin-left: 7rem;
 }
 
+h3 p{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
 .parag {
     color: white;
     font-size: 1.5rem;
     margin-bottom: 4rem;
     margin-top: 1rem;
-
+    font-family: 'Inter', sans-serif;
 }
 
 
@@ -62,7 +65,7 @@ h3 {
     margin: 0 auto;
     display: flex;
     position: absolute;
-    bottom: 8rem;
+    bottom: 20rem;
     right: 10rem;
     box-shadow: 2px 2px 29px 2px aqua;
 
@@ -77,8 +80,8 @@ button:hover {
 .container-check {
     display: flex;
     position: absolute;
-    bottom: 8rem;
-    left: 10rem;
+    bottom: 20rem;
+    left: 6rem;
     color: white;
     font-weight: bold;
 
@@ -107,15 +110,11 @@ label {
     color: #fff;
     font-size: 1.2rem;
     margin-top: 1.2rem;
+    list-style-type: disc;
+    font-family: 'Inter', sans-serif;
 }
 
 li span {
     font-weight: bold;
-    font-size: 1.4rem;
-}
-
-ul li::marker {
-    list-style-type: circle;
-    color: white;
-    font-size: 1.5em;
+    font-size: 1.2rem;
 }
