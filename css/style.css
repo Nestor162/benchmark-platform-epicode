@@ -1,6 +1,6 @@
 body {
     background-image: url("../assets/img/bg.jpg");
-    background-repeat: no-repeat;
+
     background-size: cover;
     height: 100vh;
 }
@@ -33,6 +33,7 @@ h3 {
     font-weight: bold;
     margin-left: 7rem;
     margin-top: 3rem;
+    font-family: "Outfit", sans-serif;
 }
 
 .parag {
@@ -67,11 +68,11 @@ button:hover {
 }
 
 .container-check {
-    left: 6rem;
     color: white;
     font-weight: bold;
     margin-top: 5rem;
     cursor: pointer;
+    margin-left: 7.5rem;
 }
 
 input {
