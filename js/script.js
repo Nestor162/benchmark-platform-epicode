@@ -1,5 +1,6 @@
 let tag = document.querySelector("body");
-//IMG
+
+//Questa serie di funzioni crea le diverse parti della prima 'slide' (Welcome)
 function createImg() {
     let img = document.createElement("img");
     img.src = "assets/img/epicode_logo.png";
@@ -91,6 +92,8 @@ function createButton() {
         }
     });
 }
+
+// Al caricamento della pagina si eseguono le funzioni per costruire l'HTML
 window.onload = function () {
     createImg();
     createTitle();
@@ -99,12 +102,12 @@ window.onload = function () {
     createButton();
     let button = document.querySelector(".button");
     button.addEventListener("click", function () {
-        tag.innerHTML = "";
+        // al click del bottone si passa alla 'benchmark page'
         createBenchPage();
     });
 };
 
-//////////QUIZ/////////////////
+/////////////// QUIZ ///////////////
 
 class Quiz {
     constructor(
@@ -247,16 +250,8 @@ let quizQuest = [
     quiz10,
 ];
 
-/*function getRandomQuiz(){
-    let output = [];
-
-    quizQuest.forEach((question, questionNumber) => {
-        let answers = [];
-
-        for (letter in question.)
-    }
-)}*/
-
+// Dato un numero in input (n) che indica il numero di domande,
+// si estragono in modo casuale le domande contenute nell'array quizQuest
 function getRandomQuiz(n) {
     let output = [];
     let usedQuestions = []; // array di domande già usate
@@ -276,35 +271,78 @@ function getRandomQuiz(n) {
     return output;
 }
 
+// ottiene un numero casuale per stabilire la lunghezza del quiz
+// si puo scegliere il minimo e il massimo
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Ottiene array di domande random che contiene almeno 5 domande e non piu di 10
+let domandeRandom = getRandomQuiz(randomNumber(5, 10));
+
 function createBenchPage() {
+    // svuota HTML precedente
+    tag.innerHTML = "";
+    // crea logo e sfondo
     createImg();
-    let domandeRandom = getRandomQuiz(5);
-    let indexDomanda = 0;
+    // se si arriva all'ultima domanda passare a pagina dei risultati
+    // altrimenti si stampa una nuova domanda
+    indexDomanda === domandeRandom.length ? alert("risulatati") : printQuiz();
+}
 
-    function printQuiz() {
-        //struttura dei radio buttons
-        let fieldset = document.createElement("fieldset");
-        tag.append(fieldset);
-        let domanda = document.createElement("legend");
-        domanda.textContent = domandeRandom[indexDomanda].question;
-        fieldset.prepend(domanda);
+// indica la domanda corrente
+let indexDomanda = 0;
 
-        //si crea un nuovo array con tutte le domande (corrette e non)
-        let allAnswer = [...domandeRandom[indexDomanda].incorrect];
-        allAnswer.push(domandeRandom[indexDomanda].correct);
+// mostra la domanda e tutte le possibili risposte
+function printQuiz() {
+    //struttura dei radio buttons
+    let fieldset = document.createElement("fieldset");
+    tag.append(fieldset);
+    let domanda = document.createElement("legend");
+    domanda.textContent = domandeRandom[indexDomanda].question;
+    fieldset.prepend(domanda);
 
-        for (risposta of allAnswer) {
-            let input = document.createElement("input");
-            input.setAttribute("name", "answer");
-            let risposte = document.createElement("label");
-            let div = document.createElement("div");
-            input.setAttribute("type", "radio");
-            risposte.innerText = risposta;
-            div.append(input);
-            div.append(risposte);
-            fieldset.append(div);
+    // si crea un nuovo array con tutte le domande (corrette e non)
+    let allAnswer = [...domandeRandom[indexDomanda].incorrect];
+    allAnswer.push(domandeRandom[indexDomanda].correct);
+
+    // 'mescola' le risoste per mostrarle in ordine casuale
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
-        indexDomanda++;
     }
-    printQuiz();
+    shuffleArray(allAnswer);
+
+    // mostra domande e ripsoste su HTML
+    for (risposta of allAnswer) {
+        let input = document.createElement("input");
+        input.setAttribute("name", "answer");
+        let risposte = document.createElement("label");
+        let div = document.createElement("div");
+        input.setAttribute("type", "radio");
+        input.setAttribute("value", risposta);
+        risposte.innerText = risposta;
+        div.append(input);
+        div.append(risposte);
+        fieldset.append(div);
+    }
+    indexDomanda++;
+    getAnswer();
+}
+
+let userAnswers = [];
+
+function getAnswer() {
+    let radios = document.querySelectorAll("input[type = radio]");
+
+    // ottiene risposta dall'utente e la salva in un array, poi passa alla domanda successiva
+    for (let i = 0; i < radios.length; i++) {
+        radios[i].addEventListener("click", function () {
+            userAnswers.push(this.value);
+            console.log(userAnswers);
+            createBenchPage();
+        });
+    }
 }
