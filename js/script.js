@@ -287,6 +287,7 @@ function createBenchPage() {
     createImg();
     // se si arriva all'ultima domanda passare a pagina dei risultati
     // altrimenti si stampa una nuova domanda
+    console.log(domandeRandom.length);
     indexDomanda === domandeRandom.length ? alert("risulatati") : printQuiz();
 }
 
@@ -328,6 +329,8 @@ function printQuiz() {
         div.append(risposte);
         fieldset.append(div);
     }
+    console.log(indexDomanda);
+    startTimer(domandeRandom[indexDomanda].time); // inizia timer
     indexDomanda++;
     getAnswer();
 }
@@ -345,4 +348,25 @@ function getAnswer() {
             createBenchPage();
         });
     }
+}
+
+// funzione timer
+function startTimer(seconds) {
+    let countdown = seconds;
+    let timerContainer = document.createElement("div");
+    timerContainer.classList.add("timer_container");
+    tag.append(timerContainer);
+    let time = document.createElement("p");
+
+    let timer = setInterval(function () {
+        countdown--;
+        time.innerHTML = "SECONDS " + countdown + " REMAINIG";
+        timerContainer.append(time);
+        if (countdown === 0) {
+            time.innerHTML = "";
+            userAnswers.push(null);
+            clearInterval(timer);
+            createBenchPage();
+        }
+    }, 1000);
 }
