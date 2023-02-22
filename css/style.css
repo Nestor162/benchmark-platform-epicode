@@ -129,6 +129,7 @@ li span {
 
 .starColorHover{
     fill:#00FFFF;
-    border: 1px solid black
+    border: 1px solid black;
+    background-color: #00FFFF;
 }
 
