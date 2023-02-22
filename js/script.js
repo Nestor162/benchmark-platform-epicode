@@ -384,5 +384,62 @@ function createBenchPage() {
 
     // se si arriva all'ultima domanda passare a pagina dei risultati
     // altrimenti si stampa una nuova domanda
-    indexDomanda === domandeRandom.length ? alert("risulatati") : printQuiz();
+    indexDomanda === domandeRandom.length ? displayResult() : printQuiz();
+}
+
+
+
+function displayResult() {
+
+    tag.innerHTML = '';
+    createImg();
+
+
+    const canvas = document.createElement('canvas');
+    const divCanvas = document.createElement('div');
+    // imposta l'ID dell'elemento canvas
+    canvas.id = 'myChart';
+    // aggiungi l'elemento canvas al documento
+    tag.appendChild(divCanvas);
+    divCanvas.appendChild(canvas);
+
+    let correctAnswers = 0;
+
+    for (i = 0; i < domandeRandom.length; i++) {
+        if (userAnswers[i] === quizQuest.correct) {
+            correctAnswers++;
+        }
+    }
+
+    const uncorrectAnswers = allAnswer.length - correctAnswers;
+
+
+    const data = {
+        labels: [
+            'Correct',
+            'Wrong'
+        ],
+        datasets: [{
+            label: 'Quiz Answers',
+            data: [correctAnswers, uncorrectAnswers],
+            backgroundColor: [
+                'rgb(75, 192, 192)',
+                'rgb(255, 99, 132)'
+            ]
+        }]
+    };
+
+    const chart = new Chart(
+        document.getElementById('myChart'),
+        {
+            type: 'doughnut',
+            data: data,
+            options: {}
+        }
+    );
+
+    Chart.data.datasets[0].data[0] = correctAnswers;
+    Chart.data.datasets[0].data[1] = uncorrectAnswers;
+    Chart.update();
+
 }
