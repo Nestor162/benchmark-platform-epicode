@@ -310,6 +310,8 @@ function printQuiz() {
         let input = document.createElement("input");
         input.setAttribute("name", "answer");
         let risposte = document.createElement("label");
+        risposte.setAttribute("for", risposta);
+        input.setAttribute("id", risposta);
         let div = document.createElement("div");
         input.setAttribute("type", "radio");
         input.setAttribute("value", risposta);
