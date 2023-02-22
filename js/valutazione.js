@@ -1,6 +1,5 @@
 const main = document.querySelector('.stars')
 const starUl = createElements(main,'ul','main')
-const output = createElements(main,'div','output')
 
 //ciclo stelline
 
