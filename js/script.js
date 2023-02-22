@@ -280,17 +280,6 @@ function randomNumber(min, max) {
 // Ottiene array di domande random che contiene almeno 5 domande e non piu di 10
 let domandeRandom = getRandomQuiz(randomNumber(5, 10));
 
-function createBenchPage() {
-    // svuota HTML precedente
-    tag.innerHTML = "";
-    // crea logo e sfondo
-    createImg();
-    // se si arriva all'ultima domanda passare a pagina dei risultati
-    // altrimenti si stampa una nuova domanda
-    console.log(domandeRandom.length);
-    indexDomanda === domandeRandom.length ? alert("risulatati") : printQuiz();
-}
-
 // indica la domanda corrente
 let indexDomanda = 0;
 
@@ -329,7 +318,7 @@ function printQuiz() {
         div.append(risposte);
         fieldset.append(div);
     }
-    console.log(indexDomanda);
+
     startTimer(domandeRandom[indexDomanda].time); // inizia timer
     indexDomanda++;
     getAnswer();
@@ -344,11 +333,13 @@ function getAnswer() {
     for (let i = 0; i < radios.length; i++) {
         radios[i].addEventListener("click", function () {
             userAnswers.push(this.value);
-            console.log(userAnswers);
             createBenchPage();
         });
     }
 }
+
+let timer; // variabile che tiene traccia del Timer
+let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
 
 // funzione timer
 function startTimer(seconds) {
@@ -358,15 +349,38 @@ function startTimer(seconds) {
     tag.append(timerContainer);
     let time = document.createElement("p");
 
-    let timer = setInterval(function () {
-        countdown--;
-        time.innerHTML = "SECONDS " + countdown + " REMAINIG";
-        timerContainer.append(time);
-        if (countdown === 0) {
-            time.innerHTML = "";
-            userAnswers.push(null);
-            clearInterval(timer);
-            createBenchPage();
-        }
-    }, 1000);
+    // verifica se il Timer è in esecuzione
+    if (!isTimerRunning) {
+        timer = setInterval(function () {
+            countdown--;
+            time.innerHTML = "SECONDS " + countdown + " REMAINIG";
+            timerContainer.append(time);
+            if (countdown === 0) {
+                time.innerHTML = "";
+                userAnswers.push(null);
+                clearInterval(timer);
+                createBenchPage();
+            }
+        }, 1000);
+
+        isTimerRunning = true; // imposta la variabile a true per indicare che il Timer è in esecuzione
+    }
+}
+
+function createBenchPage() {
+    // svuota HTML precedente
+    tag.innerHTML = "";
+
+    // verifica se il Timer è in esecuzione e lo ferma
+    if (isTimerRunning) {
+        clearInterval(timer);
+        isTimerRunning = false; // imposta la variabile a false per indicare che il Timer è stato fermato
+    }
+
+    // crea logo e sfondo
+    createImg();
+
+    // se si arriva all'ultima domanda passare a pagina dei risultati
+    // altrimenti si stampa una nuova domanda
+    indexDomanda === domandeRandom.length ? alert("risulatati") : printQuiz();
 }
