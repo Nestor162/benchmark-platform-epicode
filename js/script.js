@@ -385,16 +385,16 @@ function createBenchPage() {
     indexDomanda === domandeRandom.length ? displayResult() : printQuiz();
 }
 
-function displayResult(){
+function displayResult() {
 
-tag.innerHTML='';
-createImg();
+    tag.innerHTML = '';
+    createImg();
 
 
-let correctAnswers = 0;
+    let correctAnswers = 0;
 
-    for (i=0;i<domandeRandom.length;i++){
-        if(userAnswers[i] === quizQuest[i]._correct){
+    for (i = 0; i < domandeRandom.length; i++) {
+        if (userAnswers[i] === quizQuest.correct) {
             correctAnswers++;
         }
     }
@@ -402,32 +402,32 @@ let correctAnswers = 0;
     const uncorrectAnswers = allAnswer.length - correctAnswers;
 
 
-const data = {
-    labels: [
-      'Correct',
-      'Wrong'
-    ],
-    datasets: [{
-      label: 'Quiz Answers',
-      data: [correctAnswers, uncorrectAnswers],
-      backgroundColor: [
-        'rgb(75, 192, 192)',
-        'rgb(255, 99, 132)'
-      ]
-    }]
-};
+    const data = {
+        labels: [
+            'Correct',
+            'Wrong'
+        ],
+        datasets: [{
+            label: 'Quiz Answers',
+            data: [correctAnswers, uncorrectAnswers],
+            backgroundColor: [
+                'rgb(75, 192, 192)',
+                'rgb(255, 99, 132)'
+            ]
+        }]
+    };
 
-const myChart = new Chart(
-    document.getElementById('myChart'),
-    {
-      type: 'doughnut',
-      data: data,
-      options: {}
-    }
-  );
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        {
+            type: 'doughnut',
+            data: data,
+            options: {}
+        }
+    );
 
-  myChart.data.datasets[0].data[0] = correctAnswers;
-  myChart.data.datasets[0].data[1] = uncorrectAnswers;
-  myChart.update();
-  
+    myChart.data.datasets[0].data[0] = correctAnswers;
+    myChart.data.datasets[0].data[1] = uncorrectAnswers;
+    myChart.update();
+
 }
