@@ -394,24 +394,23 @@ function displayResult() {
     tag.innerHTML = '';
     createImg();
 
-
+    let allAnswer = [...domandeRandom[indexDomanda].incorrect];
+    allAnswer.push(domandeRandom[indexDomanda].correct);
     const canvas = document.createElement('canvas');
     const divCanvas = document.createElement('div');
-    // imposta l'ID dell'elemento canvas
     canvas.id = 'myChart';
-    // aggiungi l'elemento canvas al documento
     tag.appendChild(divCanvas);
     divCanvas.appendChild(canvas);
 
     let correctAnswers = 0;
 
     for (i = 0; i < domandeRandom.length; i++) {
-        if (userAnswers[i] === quizQuest.correct) {
+        if (userAnswers[i] === Quiz.correct) {
             correctAnswers++;
         }
     }
 
-    const uncorrectAnswers = allAnswer.length - correctAnswers;
+    let uncorrectAnswers = allAnswer.length - correctAnswers;
 
 
     const data = {
