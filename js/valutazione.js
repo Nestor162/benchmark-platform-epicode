@@ -1,14 +1,11 @@
 const main = document.querySelector('.stars')
-const starUl = createElements(main,'ul','main')
 
 //ciclo stelline
 
 
 for(let x=0;x<10;x++){
-    const star = createElements(starUl,'li','star');
-
-    //qui dovrebbe andarci l'svg
-    star.innerHTML = '&#10029'
+    const star = createElements(main,'object','star');
+    star.data = '../assets/img/star.svg'
     star.starValue = (x+1);
     ['mouseover', 'mouseout', 'click'].forEach((ele)=>{
         star.addEventListener(ele,starRate);
@@ -26,8 +23,8 @@ function starRate(e){
     colorRate(colorStars,e.target.starValue);
 }
 
-
 function colorRate(colorStars,val){
+    console.log(val);
     colorStars.forEach((star,index)=>{
         if(index < val){
             star.classList.add('starColorHover');

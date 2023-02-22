@@ -121,13 +121,12 @@ li span {
 .star{
     display: inline-block;
     margin-left: 2em;
-    opacity: 0.5;
     cursor: pointer;
-    color: pink
+    color: darkblue
 }
 
 .starColorHover{
-    opacity: 1;
-    color: orange
+    fill:#00FFFF;
+    border: 1px solid black
 }
 
