@@ -1,10 +1,11 @@
 const main = document.querySelector('.stars')
 
+
 //ciclo stelline
 
 
 for(let x=0;x<10;x++){
-    const star = createElements(main,'object','star');
+    const star = createElements(main,'object','star')
     star.data = '../assets/img/star.svg'
     star.starValue = (x+1);
     ['mouseover', 'mouseout', 'click'].forEach((ele)=>{

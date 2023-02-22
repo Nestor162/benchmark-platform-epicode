@@ -122,14 +122,11 @@ li span {
     display: inline-block;
     margin-left: 2em;
     cursor: pointer;
-    color: darkblue;
     margin-left: 40px;
     margin-top: 400px;
 }
 
 .starColorHover{
-    fill:#00FFFF;
-    border: 1px solid black;
-    background-color: #00FFFF;
+    filter: invert(100%) sepia(48%) saturate(5753%) hue-rotate(110deg) brightness(100%) contrast(107%);
 }
 
