@@ -1,12 +1,25 @@
+@font-face {
+    font-family: "Outfit";
+    src: url("https://fonts.googleapis.com");
+    src: url("https://fonts.gstatic.com");
+    src: url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+}
+
 body {
     background-image: url("../assets/img/bg.jpg");
-
     background-size: cover;
     height: 100vh;
 }
 
+.divConteiner {
+    padding: 10rem 25rem;
+
+}
+
+
+
 .logo {
-    width: 10%;
+    width: 18%;
     margin-top: 3%;
     margin-left: 5%;
     margin-right: 5%;
@@ -176,6 +189,7 @@ fieldset {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10rem;
 }
 
 .answer_container {
@@ -200,10 +214,11 @@ fieldset {
     padding-bottom: 20px;
 }
 
-.answer_container > div {
+.answer_container>div {
     flex: 50%;
     box-shadow: 0px -3px 8px rgb(255, 255, 255);
-    flex: 0 0 calc(50% - 70px); /* la larghezza è 50% meno il margine negativo */
+    flex: 0 0 calc(50% - 70px);
+    /* la larghezza è 50% meno il margine negativo */
     margin-bottom: 40px;
 }
 

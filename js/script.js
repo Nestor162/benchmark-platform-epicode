@@ -1,11 +1,14 @@
 let tag = document.querySelector("body");
+const divConteiner = document.createElement('div');
+divConteiner.classList.add('divConteiner');
+tag.append(divConteiner);
 
 //Questa serie di funzioni crea le diverse parti della prima 'slide' (Welcome)
 function createImg() {
     let img = document.createElement("img");
     img.src = "assets/img/epicode_logo.png";
     img.className += "logo";
-    tag.append(img);
+    divConteiner.append(img);
 }
 
 function createTitle() {
@@ -16,7 +19,7 @@ function createTitle() {
     h1.innerHTML = "Welcome to ";
     span.innerHTML = "your exam";
 
-    tag.append(h1);
+    divConteiner.append(h1);
     h1.append(span);
 }
 
@@ -24,7 +27,7 @@ function createInstructions() {
     //instructions
     let h3 = document.createElement("h3");
     h3.textContent = "Instructions";
-    tag.append(h3);
+    divConteiner.append(h3);
 
     let p = document.createElement("p");
     p.innerHTML =
@@ -47,7 +50,7 @@ function createList() {
     ];
 
     let lista = document.createElement("ul");
-    tag.append(lista);
+    divConteiner.append(lista);
 
     listaLi.forEach((list) => {
         let li = document.createElement("li");
@@ -68,7 +71,7 @@ function createButton() {
 
     button.className = "button";
 
-    tag.append(button);
+    divConteiner.append(button);
 
     //Checkbox & termini e condizioni
     let check = document.createElement("input");
@@ -82,7 +85,7 @@ function createButton() {
     divCheck.append(check);
     divCheck.append(txtCheck);
 
-    tag.append(divCheck);
+    divConteiner.append(divCheck);
 
     button.disabled = true;
     check.addEventListener("change", function () {
@@ -288,7 +291,7 @@ let indexDomanda = 0;
 function printQuiz() {
     //struttura dei radio buttons
     let fieldset = document.createElement("fieldset");
-    tag.append(fieldset);
+    divConteiner.append(fieldset);
     let domanda = document.createElement("legend");
     let answerContainer = document.createElement("div");
     answerContainer.classList.add("answer_container");
@@ -352,7 +355,7 @@ function startTimer(seconds) {
     let countdown = seconds;
     let timerContainer = document.createElement("div");
     timerContainer.classList.add("timer_container");
-    tag.append(timerContainer);
+    divConteiner.append(timerContainer);
     let time = document.createElement("p");
 
     // verifica se il Timer è in esecuzione
@@ -375,7 +378,7 @@ function startTimer(seconds) {
 
 function createBenchPage() {
     // svuota HTML precedente
-    tag.innerHTML = "";
+    divConteiner.innerHTML = "";
 
     // verifica se il Timer è in esecuzione e lo ferma
     if (isTimerRunning) {
@@ -393,7 +396,7 @@ function createBenchPage() {
 
 /* import { Chart } from 'chart.js/auto'; */
 function displayResult() {
-    tag.innerHTML = "";
+    divConteiner.innerHTML = "";
     createImg();
 
     let h2 = document.createElement("h2");
@@ -402,7 +405,7 @@ function displayResult() {
     let paragChart = document.createElement("p");
     paragChart.textContent = "The summary of your answers:";
     paragChart.classList.add("paragChart");
-    tag.appendChild(h2);
+    divConteiner.appendChild(h2);
     h2.appendChild(paragChart);
 
     let divCanvas = document.createElement("div");
@@ -410,13 +413,13 @@ function displayResult() {
     let canvas = document.createElement("canvas");
     canvas.id = "myChart";
 
-    tag.append(divCanvas);
+    divConteiner.append(divCanvas);
     divCanvas.append(canvas);
 
     const btnChart = document.createElement("button");
     btnChart.textContent = "rate us".toUpperCase();
     btnChart.classList.add("btnChart");
-    tag.appendChild(btnChart);
+    divConteiner.appendChild(btnChart);
 
     let correctAnswers = 0;
     console.log(userAnswers);
