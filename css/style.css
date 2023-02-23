@@ -157,7 +157,8 @@ fieldset {
     width: 360px;
     border-radius: 40px;
     text-align: center;
-    padding-top: 20px;
+    /* padding-top: 20px; */
+    padding-bottom: 20px;
 }
 
 .answer_container > div {
@@ -171,4 +172,12 @@ legend {
     margin-top: 30px;
     text-align: center;
     margin: 80px auto 0px auto;
+}
+
+.answer_container div label {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    margin-left: 0;
 }
