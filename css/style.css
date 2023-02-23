@@ -147,6 +147,10 @@ fieldset {
     margin: 100px;
 }
 
+.answer_container div:hover {
+    background-color: #900090;
+}
+
 .answer_container div {
     background-color: rgb(35, 41, 79, 0.4);
     height: 50px;
