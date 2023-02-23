@@ -2,7 +2,6 @@ const main = document.createElement('div')
 main.className += 'stars'
 const tag = document.querySelector("body");
 
-
 //titolo 'tell us how it's going'
 
 const h1 = createElements(tag, 'h1', 'h1')
@@ -76,6 +75,7 @@ button.id += 'moreInfoPosition'
 
 button.addEventListener("click", function () {
     localStorage.setItem('Commento', inputValue.value);
+    console.log(inputValue.value);
     localStorage.getItem(inputValue.value)
 });
 
