@@ -129,10 +129,10 @@ fieldset div label {
     color: white;
 }
 
-#myChart {
+/*#myChart {
      width: 100px;
      height: 100px; 
-}
+}*/
 
 .divCanvas {
     /*display:none*/
@@ -140,5 +140,5 @@ fieldset div label {
     height:600px;
     display: flex;
     margin: 0 auto;
-    
+
 }
