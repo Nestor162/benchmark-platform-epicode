@@ -129,6 +129,10 @@ fieldset div label {
     color: white;
 }
 
+input[type="radio"] {
+    opacity: 0;
+}
+
 fieldset {
     display: flex;
     justify-content: center;
@@ -144,7 +148,7 @@ fieldset {
 }
 
 .answer_container div {
-    background-color: #23294f;
+    background-color: rgb(35, 41, 79, 0.4);
     height: 50px;
     width: 360px;
     border-radius: 40px;
@@ -157,4 +161,10 @@ fieldset {
     box-shadow: 0px -3px 8px rgb(255, 255, 255);
     flex: 0 0 calc(50% - 70px); /* la larghezza è 50% meno il margine negativo */
     margin-bottom: 40px;
+}
+
+legend {
+    margin-top: 30px;
+    text-align: center;
+    margin: 80px auto 0px auto;
 }
