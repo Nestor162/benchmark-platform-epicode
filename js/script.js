@@ -1,4 +1,3 @@
-import Chart from 'chart.js/auto';
 
 
 
@@ -69,6 +68,7 @@ function createButton() {
 
     let button = document.createElement("button");
     button.innerHTML = "proceed".toUpperCase();
+
     button.className = "button";
 
     tag.append(button);
@@ -394,7 +394,6 @@ function createBenchPage() {
 
 
 function displayResult() {
-
     tag.innerHTML = '';
     createImg();
 
