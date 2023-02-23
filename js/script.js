@@ -440,7 +440,7 @@ function displayResult() {
                 label: "Quiz Answers",
                 data: [correctAnswers, uncorrectAnswers],
                 backgroundColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
-                hoverOffset: 8,
+                hoverOffset: 20,
             },
         ],
     };
