@@ -415,6 +415,13 @@ function displayResult() {
     tag.append(divCanvas);
     divCanvas.append(canvas)
 
+    const btnChart = document.createElement('button');
+    btnChart.textContent = 'rate us'.toUpperCase();
+    btnChart.classList.add('btnChart');
+    tag.appendChild(btnChart);
+
+
+
 
 
     let correctAnswers = 0;
@@ -449,11 +456,10 @@ function displayResult() {
         type: 'doughnut',
         data: data,
     }
+
+
+
+
     );
-
-
-    /* Chart.data.datasets[0].data[0] = correctAnswers;
-    Chart.data.datasets[0].data[1] = uncorrectAnswers; */
-    /*  Chart.update(); */
 
 }
