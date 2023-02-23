@@ -108,6 +108,7 @@ window.onload = function () {
         // al click del bottone si passa alla 'benchmark page'
         createBenchPage();
     });
+
 };
 
 /////////////// QUIZ ///////////////
@@ -397,6 +398,14 @@ function displayResult() {
     tag.innerHTML = '';
     createImg();
 
+    let divCanvas = document.createElement('div');
+    /* divCanvas.classList.add('dnone'); */
+    let canvas = document.createElement('canvas');
+    canvas.id = 'myChart'
+
+    tag.append(divCanvas);
+
+
 
 
     let correctAnswers = 0;
@@ -422,8 +431,8 @@ function displayResult() {
         ],
     };
 
-    const myChart = document.querySelector('#my-chart');
-    new Chart(myChart, {
+    canvas = document.querySelector('#myChart');
+    new Chart(canvas, {
 
         type: 'doughnut',
         data: data,
