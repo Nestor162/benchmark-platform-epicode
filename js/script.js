@@ -289,6 +289,8 @@ function printQuiz() {
     let fieldset = document.createElement("fieldset");
     tag.append(fieldset);
     let domanda = document.createElement("legend");
+    let answerContainer = document.createElement("div");
+    answerContainer.classList.add("answer_container");
     domanda.textContent = domandeRandom[indexDomanda].question;
     fieldset.prepend(domanda);
 
@@ -313,10 +315,13 @@ function printQuiz() {
         let div = document.createElement("div");
         input.setAttribute("type", "radio");
         input.setAttribute("value", risposta);
+        risposte.setAttribute("for", risposta);
+        input.setAttribute("id", risposta);
         risposte.innerText = risposta;
         div.append(input);
         div.append(risposte);
-        fieldset.append(div);
+        answerContainer.append(div);
+        fieldset.append(answerContainer);
     }
 
     startTimer(domandeRandom[indexDomanda].time); // inizia timer
