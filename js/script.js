@@ -404,7 +404,7 @@ function displayResult() {
     canvas.id = 'myChart'
 
     tag.append(divCanvas);
-
+    divCanvas.append(canvas)
 
 
 
