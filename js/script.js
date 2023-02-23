@@ -440,14 +440,40 @@ function displayResult() {
                 label: "Quiz Answers",
                 data: [correctAnswers, uncorrectAnswers],
                 backgroundColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
-                hoverOffset: 20,
+                hoverOffset: 15,
+
             },
         ],
+
     };
+
 
     canvas = document.querySelector("#myChart");
     new Chart(canvas, {
         type: "doughnut",
         data: data,
+        options: {
+            borderWidth: 0,
+            borderRadius: 5,
+            hoverBorderWidth: 0,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: {
+                    enabled: false,
+                },
+                shadow: {
+                    enabled: true,
+                    color: 'rgba(0, 0, 0, 0.5)',
+                    blur: 15,
+                    offsetX: 5,
+                    offsetY: 5,
+                }
+            },
+            cutout: '73%',
+        },
+
     });
+
 }

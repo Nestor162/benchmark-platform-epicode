@@ -13,7 +13,7 @@ body {
 
 .divConteiner {
     /* padding: 2rem 19rem; */
-    width: 50%;
+    width: 55%;
     height: 50%;
     margin: 0 auto;
 }
@@ -87,9 +87,10 @@ button:hover {
     width: 85%;
     color: white;
     font-weight: bold;
-    cursor: pointer;
-    margin: 0 auto;
+
     padding-top: 6rem;
+    justify-content: space-around;
+    margin: 0 auto;
 }
 
 input {
@@ -105,6 +106,7 @@ input {
 label {
     margin-left: 1rem;
     font-family: "Inter", sans-serif;
+    cursor: pointer;
 }
 
 /*css lista*/
