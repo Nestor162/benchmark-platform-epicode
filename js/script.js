@@ -1,6 +1,5 @@
 
 
-
 let tag = document.querySelector("body");
 
 //Questa serie di funzioni crea le diverse parti della prima 'slide' (Welcome)
@@ -397,8 +396,7 @@ function displayResult() {
     tag.innerHTML = '';
     createImg();
 
-    let allAnswer = [...domandeRandom[indexDomanda].incorrect];
-    allAnswer.push(domandeRandom[indexDomanda].correct);
+
     const canvas = document.createElement('canvas');
     const divCanvas = document.createElement('div');
     canvas.id = 'myChart';
@@ -427,7 +425,8 @@ function displayResult() {
             backgroundColor: [
                 'rgb(75, 192, 192)',
                 'rgb(255, 99, 132)'
-            ]
+            ],
+            hoverOffset: 4
         }]
     };
 
@@ -436,7 +435,6 @@ function displayResult() {
         {
             type: 'doughnut',
             data: data,
-            options: {}
         }
     );
 
