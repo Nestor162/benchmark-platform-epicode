@@ -30,15 +30,18 @@ function starRate(e){
     const eventType = e.type
     const parent = e.target.closest('.stars');
     const colorStars = parent.querySelectorAll('.star');
+    const valutazione = e.target.starValue
     if(eventType === 'mouseover'){
         colorRate(colorStars);
+    }
+    if(eventType === 'click'){
+        localStorage.setItem('Valutazione', valutazione);
     }
 
     colorRate(colorStars,e.target.starValue);
 }
 
 function colorRate(colorStars,val){
-    console.log(val);
     colorStars.forEach((star,index)=>{
         if(index < val){
             star.classList.add('starColorHover');
@@ -59,14 +62,22 @@ inputText.className += 'inputText'
 tag.append(inputText)
 
 const input = createElements(inputText,'input','inp')
+const inputValue = document.querySelector('.inp')
 input.type = 'text'
 input.placeholder = 'Write your comment here'
+
+
 
 //bottone sotto
 
 const button = createElements(tag,'button','button');
 button.innerHTML = "more info".toUpperCase();
 button.id += 'moreInfoPosition'
+
+button.addEventListener("click", function () {
+    localStorage.setItem('Commento', inputValue.value);
+    localStorage.getItem(inputValue.value)
+});
 
 //funzione per creare elementi
 

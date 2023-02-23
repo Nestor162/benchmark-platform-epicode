@@ -16,12 +16,6 @@ span.innerHTML = "your exam";
 tag.append(h1);
 h1.append(span);
 
-
-
-
-
-
-
 //instructions
 
 let h3 = document.createElement('h3');
