@@ -399,7 +399,7 @@ function displayResult() {
     createImg();
 
     let divCanvas = document.createElement('div');
-    /* divCanvas.classList.add('dnone'); */
+    divCanvas.classList.add('divCanvas'); 
     let canvas = document.createElement('canvas');
     canvas.id = 'myChart'
 
@@ -409,9 +409,12 @@ function displayResult() {
 
 
     let correctAnswers = 0;
+    console.log(userAnswers);
+    console.log(domandeRandom);
+    console.log(correctAnswers);
 
     for (let i = 0; i < domandeRandom.length; i++) {
-        if (userAnswers[i] === domandeRandom[i]) {
+        if (userAnswers[i] === domandeRandom[i].correct) {
             correctAnswers++;
         }
     }

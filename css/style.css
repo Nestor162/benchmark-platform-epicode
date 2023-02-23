@@ -130,10 +130,15 @@ fieldset div label {
 }
 
 #myChart {
-    /* width: 20rem;
-    height: 20rem; */
+     width: 100px;
+     height: 100px; 
 }
 
-.dnone {
-    display: none;
+.divCanvas {
+    /*display:none*/
+    width: 600px;
+    height:600px;
+    display: flex;
+    margin: 0 auto;
+    
 }
