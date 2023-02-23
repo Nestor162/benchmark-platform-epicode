@@ -12,7 +12,7 @@ body {
 }
 
 .divConteiner {
-    padding: 10rem 25rem;
+    padding: 1rem 25rem;
 
 }
 
@@ -142,15 +142,14 @@ fieldset div label {
     color: white;
 }
 
-/*#myChart {
-     width: 100px;
-     height: 100px; 
-}*/
+#myChart {
+    width: 100px;
+    height: 100px;
+}
 
 .divCanvas {
-    /*display:none*/
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     display: flex;
     margin: 0 auto;
 }
@@ -160,6 +159,7 @@ fieldset div label {
     font-size: 4.2rem;
     font-weight: bold;
     color: white;
+    padding-top: 4rem;
 }
 
 .paragChart {
