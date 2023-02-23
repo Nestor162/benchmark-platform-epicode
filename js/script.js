@@ -309,7 +309,7 @@ function printQuiz() {
     shuffleArray(allAnswer);
 
     // mostra domande e ripsoste su HTML
-    for (risposta of allAnswer) {
+    for (let risposta of allAnswer) {
         let input = document.createElement("input");
         input.setAttribute("name", "answer");
         let risposte = document.createElement("label");
@@ -392,54 +392,47 @@ function createBenchPage() {
 
 
 
+/* import { Chart } from 'chart.js/auto'; */
 function displayResult() {
     tag.innerHTML = '';
     createImg();
 
 
-    const canvas = document.createElement('canvas');
-    const divCanvas = document.createElement('div');
-    canvas.id = 'myChart';
-    tag.appendChild(divCanvas);
-    divCanvas.appendChild(canvas);
 
     let correctAnswers = 0;
 
-    for (i = 0; i < domandeRandom.length; i++) {
-        if (userAnswers[i] === Quiz.correct) {
+    for (let i = 0; i < domandeRandom.length; i++) {
+        if (userAnswers[i] === domandeRandom[i]) {
             correctAnswers++;
         }
     }
+    let uncorrectAnswers = domandeRandom.length - correctAnswers;
 
-    let uncorrectAnswers = allAnswer.length - correctAnswers;
 
 
     const data = {
-        labels: [
-            'Correct',
-            'Wrong'
+        labels: ['Correct', 'Wrong'],
+        datasets: [
+            {
+                label: 'Quiz Answers',
+                data: [correctAnswers, uncorrectAnswers],
+                backgroundColor: ['rgb(75, 192, 192)', 'rgb(255, 99, 132)'],
+                hoverOffset: 4,
+            },
         ],
-        datasets: [{
-            label: 'Quiz Answers',
-            data: [correctAnswers, uncorrectAnswers],
-            backgroundColor: [
-                'rgb(75, 192, 192)',
-                'rgb(255, 99, 132)'
-            ],
-            hoverOffset: 4
-        }]
     };
 
-    const chart = new Chart(
-        document.getElementById('myChart'),
-        {
-            type: 'doughnut',
-            data: data,
-        }
+    const myChart = document.querySelector('#my-chart');
+    new Chart(myChart, {
+
+        type: 'doughnut',
+        data: data,
+    }
     );
 
-    Chart.data.datasets[0].data[0] = correctAnswers;
-    Chart.data.datasets[0].data[1] = uncorrectAnswers;
-    Chart.update();
+
+    /* Chart.data.datasets[0].data[0] = correctAnswers;
+    Chart.data.datasets[0].data[1] = uncorrectAnswers; */
+    /*  Chart.update(); */
 
 }
