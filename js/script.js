@@ -84,7 +84,7 @@ function createButton() {
     divCheck.classList.add("container-check");
     divCheck.append(check);
     divCheck.append(txtCheck);
-
+    divCheck.append(button);
     divConteiner.append(divCheck);
 
     button.disabled = true;

@@ -12,7 +12,8 @@ body {
 }
 
 .divConteiner {
-    padding: 4rem 15rem;
+    margin: 0 auto;
+    padding: 2rem 19rem;
 
 }
 
@@ -56,6 +57,7 @@ h3 {
     margin-top: 1rem;
     font-family: "Inter", sans-serif;
     line-height: 1.5rem;
+    font-weight: 300;
 }
 
 .button {
@@ -69,8 +71,8 @@ h3 {
     display: flex;
     box-shadow: 2px 2px 29px 2px aqua;
     float: right;
-    margin-right: 5rem;
-    margin-top: 4rem;
+    /* margin-right: 5rem;
+    margin-top: 4rem; */
     cursor: pointer;
 }
 
@@ -81,11 +83,12 @@ button:hover {
 }
 
 .container-check {
+    width: 85%;
     color: white;
     font-weight: bold;
-    margin-top: 5rem;
     cursor: pointer;
-    margin-left: 7.5rem;
+    margin: 0 auto;
+    padding-top: 6rem;
 }
 
 input {
@@ -143,13 +146,13 @@ fieldset div label {
 }
 
 #myChart {
-    width: 100px;
-    height: 100px;
+    width: 10rem;
+    height: 10rem;
 }
 
 .divCanvas {
-    width: 500px;
-    height: 500px;
+    width: 30rem;
+    height: 30rem;
     display: flex;
     margin: 0 auto;
 }
