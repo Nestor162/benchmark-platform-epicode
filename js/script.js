@@ -394,7 +394,7 @@ function createBenchPage() {
     indexDomanda === domandeRandom.length ? displayResult() : printQuiz();
 }
 
-/* import { Chart } from 'chart.js/auto'; */
+
 function displayResult() {
     divConteiner.innerHTML = "";
     createImg();
