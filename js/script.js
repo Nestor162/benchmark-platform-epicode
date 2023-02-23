@@ -1,5 +1,3 @@
-
-
 let tag = document.querySelector("body");
 
 //Questa serie di funzioni crea le diverse parti della prima 'slide' (Welcome)
@@ -108,7 +106,6 @@ window.onload = function () {
         // al click del bottone si passa alla 'benchmark page'
         createBenchPage();
     });
-
 };
 
 /////////////// QUIZ ///////////////
@@ -293,6 +290,8 @@ function printQuiz() {
     let fieldset = document.createElement("fieldset");
     tag.append(fieldset);
     let domanda = document.createElement("legend");
+    let answerContainer = document.createElement("div");
+    answerContainer.classList.add("answer_container");
     domanda.textContent = domandeRandom[indexDomanda].question;
     fieldset.prepend(domanda);
 
@@ -314,15 +313,16 @@ function printQuiz() {
         let input = document.createElement("input");
         input.setAttribute("name", "answer");
         let risposte = document.createElement("label");
-        risposte.setAttribute("for", risposta);
-        input.setAttribute("id", risposta);
         let div = document.createElement("div");
         input.setAttribute("type", "radio");
         input.setAttribute("value", risposta);
+        risposte.setAttribute("for", risposta);
+        input.setAttribute("id", risposta);
         risposte.innerText = risposta;
         div.append(input);
         div.append(risposte);
-        fieldset.append(div);
+        answerContainer.append(div);
+        fieldset.append(answerContainer);
     }
 
     startTimer(domandeRandom[indexDomanda].time); // inizia timer
@@ -391,38 +391,32 @@ function createBenchPage() {
     indexDomanda === domandeRandom.length ? displayResult() : printQuiz();
 }
 
-
-
 /* import { Chart } from 'chart.js/auto'; */
 function displayResult() {
-    tag.innerHTML = '';
+    tag.innerHTML = "";
     createImg();
 
-    let h2 = document.createElement('h2');
-    h2.textContent = 'Results';
-    h2.classList.add('titleChart');
-    let paragChart = document.createElement('p');
-    paragChart.textContent = 'The summary of your answers:';
-    paragChart.classList.add('paragChart');
+    let h2 = document.createElement("h2");
+    h2.textContent = "Results";
+    h2.classList.add("titleChart");
+    let paragChart = document.createElement("p");
+    paragChart.textContent = "The summary of your answers:";
+    paragChart.classList.add("paragChart");
     tag.appendChild(h2);
     h2.appendChild(paragChart);
 
-    let divCanvas = document.createElement('div');
-    divCanvas.classList.add('divCanvas');
-    let canvas = document.createElement('canvas');
-    canvas.id = 'myChart'
+    let divCanvas = document.createElement("div");
+    divCanvas.classList.add("divCanvas");
+    let canvas = document.createElement("canvas");
+    canvas.id = "myChart";
 
     tag.append(divCanvas);
-    divCanvas.append(canvas)
+    divCanvas.append(canvas);
 
-    const btnChart = document.createElement('button');
-    btnChart.textContent = 'rate us'.toUpperCase();
-    btnChart.classList.add('btnChart');
+    const btnChart = document.createElement("button");
+    btnChart.textContent = "rate us".toUpperCase();
+    btnChart.classList.add("btnChart");
     tag.appendChild(btnChart);
-
-
-
-
 
     let correctAnswers = 0;
     console.log(userAnswers);
@@ -436,30 +430,21 @@ function displayResult() {
     }
     let uncorrectAnswers = domandeRandom.length - correctAnswers;
 
-
-
     const data = {
-        labels: ['Correct', 'Wrong'],
+        labels: ["Correct", "Wrong"],
         datasets: [
             {
-                label: 'Quiz Answers',
+                label: "Quiz Answers",
                 data: [correctAnswers, uncorrectAnswers],
-                backgroundColor: ['rgb(75, 192, 192)', 'rgb(255, 99, 132)'],
+                backgroundColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
                 hoverOffset: 8,
             },
         ],
     };
 
-    canvas = document.querySelector('#myChart');
+    canvas = document.querySelector("#myChart");
     new Chart(canvas, {
-
-        type: 'doughnut',
+        type: "doughnut",
         data: data,
-    }
-
-
-
-
-    );
-
+    });
 }

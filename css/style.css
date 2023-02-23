@@ -140,7 +140,6 @@ fieldset div label {
     height: 600px;
     display: flex;
     margin: 0 auto;
-
 }
 
 .titleChart {
@@ -166,4 +165,59 @@ fieldset div label {
     border: 2px solid white;
     background: none;
     padding: 1rem 3.5rem;
+}
+
+/* Domande e risposte */
+input[type="radio"] {
+    opacity: 0;
+}
+
+fieldset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.answer_container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 100px;
+}
+
+.answer_container div:hover {
+    background-color: #900090;
+}
+
+.answer_container div {
+    background-color: rgb(35, 41, 79, 0.4);
+    height: 50px;
+    width: 360px;
+    border-radius: 40px;
+    text-align: center;
+    /* padding-top: 20px; */
+    padding-bottom: 20px;
+}
+
+.answer_container > div {
+    flex: 50%;
+    box-shadow: 0px -3px 8px rgb(255, 255, 255);
+    flex: 0 0 calc(50% - 70px); /* la larghezza è 50% meno il margine negativo */
+    margin-bottom: 40px;
+}
+
+legend {
+    margin-top: 30px;
+    text-align: center;
+    margin: 80px auto 0px auto;
+}
+
+.answer_container div label {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    margin-left: 0;
+    cursor: pointer;
 }
