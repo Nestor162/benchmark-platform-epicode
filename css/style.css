@@ -137,8 +137,21 @@ fieldset div label {
 .divCanvas {
     /*display:none*/
     width: 600px;
-    height:600px;
+    height: 600px;
     display: flex;
     margin: 0 auto;
 
+}
+
+.titleChart {
+    text-align: center;
+    font-size: 4.2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.paragChart {
+    font-size: 2.2rem;
+    padding-bottom: 3rem;
+    font-weight: 300;
 }

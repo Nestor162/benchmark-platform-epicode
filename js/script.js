@@ -398,8 +398,17 @@ function displayResult() {
     tag.innerHTML = '';
     createImg();
 
+    let h2 = document.createElement('h2');
+    h2.textContent = 'Results';
+    h2.classList.add('titleChart');
+    let paragChart = document.createElement('p');
+    paragChart.textContent = 'The summary of your answers:';
+    paragChart.classList.add('paragChart');
+    tag.appendChild(h2);
+    h2.appendChild(paragChart);
+
     let divCanvas = document.createElement('div');
-    divCanvas.classList.add('divCanvas'); 
+    divCanvas.classList.add('divCanvas');
     let canvas = document.createElement('canvas');
     canvas.id = 'myChart'
 
@@ -429,7 +438,7 @@ function displayResult() {
                 label: 'Quiz Answers',
                 data: [correctAnswers, uncorrectAnswers],
                 backgroundColor: ['rgb(75, 192, 192)', 'rgb(255, 99, 132)'],
-                hoverOffset: 4,
+                hoverOffset: 8,
             },
         ],
     };
