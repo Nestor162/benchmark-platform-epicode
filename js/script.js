@@ -65,6 +65,7 @@ function createButton() {
 
     let button = document.createElement("button");
     button.innerHTML = "proceed".toUpperCase();
+
     button.className = "button";
 
     tag.append(button);
@@ -308,7 +309,7 @@ function printQuiz() {
     shuffleArray(allAnswer);
 
     // mostra domande e ripsoste su HTML
-    for (risposta of allAnswer) {
+    for (let risposta of allAnswer) {
         let input = document.createElement("input");
         input.setAttribute("name", "answer");
         let risposte = document.createElement("label");
@@ -387,5 +388,63 @@ function createBenchPage() {
 
     // se si arriva all'ultima domanda passare a pagina dei risultati
     // altrimenti si stampa una nuova domanda
-    indexDomanda === domandeRandom.length ? alert("risulatati") : printQuiz();
+    indexDomanda === domandeRandom.length ? displayResult() : printQuiz();
+}
+
+/* import { Chart } from 'chart.js/auto'; */
+function displayResult() {
+    tag.innerHTML = "";
+    createImg();
+
+    let h2 = document.createElement("h2");
+    h2.textContent = "Results";
+    h2.classList.add("titleChart");
+    let paragChart = document.createElement("p");
+    paragChart.textContent = "The summary of your answers:";
+    paragChart.classList.add("paragChart");
+    tag.appendChild(h2);
+    h2.appendChild(paragChart);
+
+    let divCanvas = document.createElement("div");
+    divCanvas.classList.add("divCanvas");
+    let canvas = document.createElement("canvas");
+    canvas.id = "myChart";
+
+    tag.append(divCanvas);
+    divCanvas.append(canvas);
+
+    const btnChart = document.createElement("button");
+    btnChart.textContent = "rate us".toUpperCase();
+    btnChart.classList.add("btnChart");
+    tag.appendChild(btnChart);
+
+    let correctAnswers = 0;
+    console.log(userAnswers);
+    console.log(domandeRandom);
+    console.log(correctAnswers);
+
+    for (let i = 0; i < domandeRandom.length; i++) {
+        if (userAnswers[i] === domandeRandom[i].correct) {
+            correctAnswers++;
+        }
+    }
+    let uncorrectAnswers = domandeRandom.length - correctAnswers;
+
+    const data = {
+        labels: ["Correct", "Wrong"],
+        datasets: [
+            {
+                label: "Quiz Answers",
+                data: [correctAnswers, uncorrectAnswers],
+                backgroundColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
+                hoverOffset: 8,
+            },
+        ],
+    };
+
+    canvas = document.querySelector("#myChart");
+    new Chart(canvas, {
+        type: "doughnut",
+        data: data,
+    });
 }
