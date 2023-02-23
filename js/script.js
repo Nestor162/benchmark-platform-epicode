@@ -1,3 +1,7 @@
+import Chart from 'chart.js/auto';
+
+
+
 let tag = document.querySelector("body");
 
 //Questa serie di funzioni crea le diverse parti della prima 'slide' (Welcome)
