@@ -180,4 +180,5 @@ legend {
     height: 100%;
     line-height: 100%;
     margin-left: 0;
+    cursor: pointer;
 }
