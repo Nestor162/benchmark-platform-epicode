@@ -351,7 +351,7 @@ function startTimer(seconds) {
 
     // verifica se il Timer è in esecuzione
     if (!isTimerRunning) {
-        timer = setInterval(function () {
+        timer = setInterval(function() {
             countdown--;
             time.innerHTML = "SECONDS " + countdown + " REMAINIG";
             timerContainer.append(time);
@@ -394,12 +394,12 @@ function displayResult() {
     let correctAnswers = 0;
 
     for (i = 0; i < domandeRandom.length; i++) {
-        if (userAnswers[i] === quizQuest.correct) {
+        if (userAnswers[i] === domandeRandom[i].correct) {
             correctAnswers++;
         }
     }
 
-    const uncorrectAnswers = allAnswer.length - correctAnswers;
+    const uncorrectAnswers = domandeRandom.length - correctAnswers;
 
 
     const data = {
@@ -417,17 +417,21 @@ function displayResult() {
         }]
     };
 
-    const myChart = new Chart(
-        document.getElementById('myChart'),
+    console.log(data);
+    let ctx = document.getElementById('myChart').getContext('2d');
+
+    const myChart = new Chart(ctx,
         {
             type: 'doughnut',
             data: data,
             options: {}
         }
-    );
-
+        );
+    
     myChart.data.datasets[0].data[0] = correctAnswers;
     myChart.data.datasets[0].data[1] = uncorrectAnswers;
     myChart.update();
+
+    tag.append(myChart);
 
 }
