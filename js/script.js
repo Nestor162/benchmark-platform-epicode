@@ -1,12 +1,15 @@
 let tag = document.querySelector("body");
+const divConteiner = document.createElement('div');
+divConteiner.classList.add('divConteiner');
+tag.prepend(divConteiner);
 
 //Questa serie di funzioni crea le diverse parti della prima 'slide' (Welcome)
-function createImg() {
-    let img = document.createElement("img");
-    img.src = "assets/img/epicode_logo.png";
-    img.className += "logo";
-    tag.append(img);
-}
+
+let img = document.createElement("img");
+img.src = "assets/img/epicode_logo.png";
+img.className += "logo";
+tag.prepend(img);
+
 
 function createTitle() {
     //welcome page
@@ -16,7 +19,7 @@ function createTitle() {
     h1.innerHTML = "Welcome to ";
     span.innerHTML = "your exam";
 
-    tag.append(h1);
+    divConteiner.append(h1);
     h1.append(span);
 }
 
@@ -24,7 +27,7 @@ function createInstructions() {
     //instructions
     let h3 = document.createElement("h3");
     h3.textContent = "Instructions";
-    tag.append(h3);
+    divConteiner.append(h3);
 
     let p = document.createElement("p");
     p.innerHTML =
@@ -47,7 +50,7 @@ function createList() {
     ];
 
     let lista = document.createElement("ul");
-    tag.append(lista);
+    divConteiner.append(lista);
 
     listaLi.forEach((list) => {
         let li = document.createElement("li");
@@ -68,7 +71,7 @@ function createButton() {
 
     button.className = "button";
 
-    tag.append(button);
+    divConteiner.append(button);
 
     //Checkbox & termini e condizioni
     let check = document.createElement("input");
@@ -81,8 +84,8 @@ function createButton() {
     divCheck.classList.add("container-check");
     divCheck.append(check);
     divCheck.append(txtCheck);
-
-    tag.append(divCheck);
+    divCheck.append(button);
+    divConteiner.append(divCheck);
 
     button.disabled = true;
     check.addEventListener("change", function () {
@@ -96,7 +99,7 @@ function createButton() {
 
 // Al caricamento della pagina si eseguono le funzioni per costruire l'HTML
 window.onload = function () {
-    createImg();
+    /* createImg(); */
     createTitle();
     createInstructions();
     createList();
@@ -276,8 +279,10 @@ function getRandomQuiz(n) {
 // si puo scegliere il minimo e il massimo
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+
 }
 
+let conteggioDomande = 1;
 // Ottiene array di domande random che contiene almeno 5 domande e non piu di 10
 let domandeRandom = getRandomQuiz(randomNumber(5, 10));
 
@@ -288,12 +293,12 @@ let indexDomanda = 0;
 function printQuiz() {
     //struttura dei radio buttons
     let fieldset = document.createElement("fieldset");
-    tag.append(fieldset);
+    divConteiner.append(fieldset);
     let domanda = document.createElement("legend");
     let answerContainer = document.createElement("div");
     answerContainer.classList.add("answer_container");
     domanda.textContent = domandeRandom[indexDomanda].question;
-    fieldset.prepend(domanda);
+    fieldset.appendChild(domanda);
 
     // si crea un nuovo array con tutte le domande (corrette e non)
     let allAnswer = [...domandeRandom[indexDomanda].incorrect];
@@ -339,43 +344,45 @@ function getAnswer() {
     for (let i = 0; i < radios.length; i++) {
         radios[i].addEventListener("click", function () {
             userAnswers.push(this.value);
+            conteggioDomande++;
             createBenchPage();
         });
     }
 }
 
-// let timer; // variabile che tiene traccia del Timer
-// let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
+let timer; // variabile che tiene traccia del Timer
+let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
 
-// // funzione timer
-// function startTimer(seconds) {
-//     let countdown = seconds;
-//     let timerContainer = document.createElement("div");
-//     timerContainer.classList.add("timer_container");
-//     tag.append(timerContainer);
-//     let time = document.createElement("p");
+// funzione timer
+function startTimer(seconds) {
+    let countdown = seconds;
+    let timerContainer = document.createElement("div");
+    timerContainer.classList.add("timer_container");
+    divConteiner.prepend(timerContainer);
+    let time = document.createElement("p");
 
-//     // verifica se il Timer è in esecuzione
-//     if (!isTimerRunning) {
-//         timer = setInterval(function () {
-//             countdown--;
-//             time.innerHTML = "SECONDS " + countdown + " REMAINIG";
-//             timerContainer.append(time);
-//             if (countdown === 0) {
-//                 time.innerHTML = "";
-//                 userAnswers.push(null);
-//                 clearInterval(timer);
-//                 createBenchPage();
-//             }
-//         }, 1000);
+    // verifica se il Timer è in esecuzione
+    if (!isTimerRunning) {
+        timer = setInterval(function () {
+            countdown--;
+            time.innerHTML = "SECONDS " + countdown + " REMAINIG";
+            timerContainer.append(time);
+            if (countdown === 0) {
+                time.innerHTML = "";
+                conteggioDomande++;
+                userAnswers.push(null);
+                clearInterval(timer);
+                createBenchPage();
+            }
+        }, 1000);
 
-//         isTimerRunning = true; // imposta la variabile a true per indicare che il Timer è in esecuzione
-//     }
-// }
+        isTimerRunning = true; // imposta la variabile a true per indicare che il Timer è in esecuzione
+    }
+}
 
 function createBenchPage() {
     // svuota HTML precedente
-    tag.innerHTML = "";
+    divConteiner.innerHTML = "";
 
     // verifica se il Timer è in esecuzione e lo ferma
     if (isTimerRunning) {
@@ -384,25 +391,30 @@ function createBenchPage() {
     }
 
     // crea logo e sfondo
-    createImg();
+    /* createImg(); */
 
     // se si arriva all'ultima domanda passare a pagina dei risultati
     // altrimenti si stampa una nuova domanda
+    let questPos = document.createElement('div')
+    questPos.id += 'position'
+    questPos.innerHTML = `<span class="white">QUESTION ${conteggioDomande}</span><span class="questionSpan">/ ${domandeRandom.length}</span>`
+
+    divConteiner.appendChild(questPos)
     indexDomanda === domandeRandom.length ? displayResult() : printQuiz();
 }
 
-/* import { Chart } from 'chart.js/auto'; */
-function displayResult() {
-    tag.innerHTML = "";
-    createImg();
 
+function displayResult() {
+    divConteiner.innerHTML = "";
+    /* createImg();
+ */
     let h2 = document.createElement("h2");
     h2.textContent = "Results";
     h2.classList.add("titleChart");
     let paragChart = document.createElement("p");
     paragChart.textContent = "The summary of your answers:";
     paragChart.classList.add("paragChart");
-    tag.appendChild(h2);
+    divConteiner.appendChild(h2);
     h2.appendChild(paragChart);
 
     let divCanvas = document.createElement("div");
@@ -410,114 +422,39 @@ function displayResult() {
     let canvas = document.createElement("canvas");
     canvas.id = "myChart";
 
-    tag.append(divCanvas);
+    let percentCorrect = document.createElement("div");
+    percentCorrect.classList.add("percentCorrect");
+    let correctLabel = document.createElement("h2");
+    let percent1 = document.createElement("h3");
+    let correctNum = document.createElement("p");
+    percentCorrect.append(correctLabel);
+    percentCorrect.append(percent1);
+    percentCorrect.append(correctNum);
+
+    let percentUncorrect = document.createElement("div");
+    percentUncorrect.classList.add("percentUncorrect");
+    let uncorrectLabel = document.createElement("h2");
+    let percent2 = document.createElement("h3");
+    let uncorrectNum = document.createElement("p");
+    percentUncorrect.append(uncorrectLabel);
+    percentUncorrect.append(percent2);
+    percentUncorrect.append(uncorrectNum);
+
+    divConteiner.append(divCanvas);
+    divCanvas.append(percentCorrect);
     divCanvas.append(canvas);
+    divCanvas.append(percentUncorrect);
+
 
     const btnChart = document.createElement("button");
     btnChart.textContent = "rate us".toUpperCase();
     btnChart.classList.add("btnChart");
-    tag.appendChild(btnChart);
-    btnChart.addEventListener("click", function () {
-        // svuota HTML precedente
-        const main = document.createElement("div");
-        main.className += "stars";
-        const tag = document.querySelector("body");
-        tag.innerHTML = "";
-
-        let container = document.createElement("div");
-        container.classList.add("container");
-        tag.append(container);
-
-        //titolo 'tell us how it's going'
-
-        const h1 = createElements(container, "h1", "h1");
-        h1.innerHTML = "Tell us how it's going";
-
-        //paragrafo
-
-        const p = createElements(container, "h3", "p");
-        p.innerHTML =
-            "From 0 to 10, how likely are you to recommend EPICODE to a friend o a colleague?";
-
-        //ciclo stelline
-        container.append(main);
-
-        for (let x = 0; x < 10; x++) {
-            const star = createElements(main, "img", "star");
-            star.src = "../assets/img/star.svg";
-            star.starValue = x + 1;
-            ["mouseover", "mouseout", "click"].forEach((ele) => {
-                star.addEventListener(ele, starRate);
-            });
-        }
-
-        function starRate(e) {
-            const eventType = e.type;
-            const parent = e.target.closest(".stars");
-            const colorStars = parent.querySelectorAll(".star");
-            const valutazione = e.target.starValue;
-            if (eventType === "mouseover") {
-                colorRate(colorStars);
-            }
-            if (eventType === "click") {
-                localStorage.setItem("Valutazione", valutazione);
-            }
-
-            colorRate(colorStars, e.target.starValue);
-        }
-
-        function colorRate(colorStars, val) {
-            colorStars.forEach((star, index) => {
-                if (index < val) {
-                    star.classList.add("starColorHover");
-                } else {
-                    star.classList.remove("starColorHover");
-                }
-            });
-        }
-
-        //invito a lasciare una valutazione
-
-        const pValutazione = createElements(container, "h3", "pValutazione");
-        pValutazione.innerHTML =
-            "Leave us an open feedback about your experience so far";
-
-        //Input
-        const inputText = document.createElement("div");
-        inputText.className += "inputText";
-        container.append(inputText);
-
-        const input = createElements(inputText, "input", "inp");
-        const inputValue = document.querySelector(".inp");
-        input.type = "text";
-        input.placeholder = "Write your comment here";
-
-        //bottone sotto
-
-        const button = createElements(container, "button", "button");
-        button.innerHTML = "more info".toUpperCase();
-        button.id += "moreInfoPosition";
-
-        button.addEventListener("click", function () {
-            localStorage.setItem("Commento", inputValue.value);
-            console.log(inputValue.value);
-            localStorage.getItem(inputValue.value);
-        });
-
-        //funzione per creare elementi
-
-        function createElements(parent, element, myClass) {
-            const el = document.createElement(element);
-            el.classList.add(myClass);
-            parent.append(el);
-            return el;
-        }
-    });
+    divConteiner.appendChild(btnChart);
 
     let correctAnswers = 0;
-    // console.log(userAnswers);
-    // console.log(domandeRandom);
-    // console.log(correctAnswers);
+    console.log(userAnswers);
+    console.log(domandeRandom);
+    console.log(correctAnswers);
 
     for (let i = 0; i < domandeRandom.length; i++) {
         if (userAnswers[i] === domandeRandom[i].correct) {
@@ -526,137 +463,69 @@ function displayResult() {
     }
     let uncorrectAnswers = domandeRandom.length - correctAnswers;
 
+
+
+
+
+
+
+
     const data = {
         labels: ["Correct", "Wrong"],
         datasets: [
             {
                 label: "Quiz Answers",
-                data: [correctAnswers, uncorrectAnswers],
+                data: [uncorrectAnswers, correctAnswers],
                 backgroundColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
-                hoverOffset: 8,
+                hoverOffset: 15,
+
             },
         ],
+
     };
+
+    let res1 = (Math.round(correctAnswers / domandeRandom.length * 100)).toFixed(2);
+    let res2 = (Math.round(uncorrectAnswers / domandeRandom.length * 100)).toFixed(2);
+    correctLabel.textContent = data.labels[0];
+    percent1.textContent = `${res1} %`;
+    correctNum.textContent = `${correctAnswers}\/${domandeRandom.length} questions`;
+    uncorrectLabel.textContent = data.labels[1];
+    percent2.textContent = `${res2} %`;
+    uncorrectNum.textContent = `${uncorrectAnswers}\/${domandeRandom.length} questions`;
 
     canvas = document.querySelector("#myChart");
     new Chart(canvas, {
         type: "doughnut",
         data: data,
+        options: {
+
+            cutout: '73%',
+            borderWidth: 0,
+            borderRadius: 5,
+            hoverBorderWidth: 0,
+
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                centerText: 'ciao',
+                tooltip: {
+                    enabled: false,
+                },
+                shadow: {
+                    enabled: true,
+                    color: 'rgba(0, 0, 0, 0.5)',
+                    blur: 15,
+                    offsetX: 5,
+                    offsetY: 5,
+                }
+            },
+
+
+
+        },
+
+
     });
-}
 
-////JS
-let timer; // variabile che tiene traccia del Timer
-let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
-
-function startTimer(seconds) {
-    let countdown = seconds;
-    let timerContainer = document.createElement("div");
-    timerContainer.classList.add("timer_container");
-    tag.append(timerContainer);
-    let time = document.createElement("p");
-
-    // Creazione cerchio
-    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("height", "130");
-    svg.setAttribute("width", "200");
-    let circle = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "circle"
-    );
-    circle.setAttribute("r", "60");
-    circle.setAttribute("cx", "100");
-    circle.setAttribute("cy", "65");
-    circle.setAttribute("stroke", "#00ffff");
-    circle.setAttribute("stroke-width", "4");
-    circle.setAttribute("stroke-linecap", "round");
-    circle.setAttribute("fill", "none");
-    svg.appendChild(circle);
-
-    timerContainer.appendChild(svg);
-
-    //secondo cerchio
-    let circle2 = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "circle"
-    );
-    circle2.setAttribute("r", "60");
-    circle2.setAttribute("cx", "100");
-    circle2.setAttribute("cy", "65");
-    circle2.setAttribute("stroke", "rgba(0,0,0,0.2)");
-    circle2.setAttribute("stroke-width", "4");
-    circle2.setAttribute("stroke-linecap", "round");
-    circle2.setAttribute("fill", "none");
-    svg.appendChild(circle2);
-
-    timerContainer.appendChild(svg);
-
-    // Creazione del testo
-    let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    text.setAttribute("x", "50%");
-    text.setAttribute("y", "50%");
-    text.setAttribute("text-anchor", "middle");
-    let tspan1 = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "tspan"
-    );
-    tspan1.setAttribute("x", "50%");
-    tspan1.setAttribute("dy", "-30");
-    tspan1.setAttribute("fill", "white");
-    tspan1.setAttribute("font-family", "Outfit");
-    tspan1.setAttribute("font-size", "0.5rem");
-
-    let tspan2 = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "tspan"
-    );
-    tspan2.setAttribute("x", "50%");
-    tspan2.setAttribute("dy", "40");
-    tspan2.setAttribute("fill", "white");
-    tspan2.setAttribute("font-family", "Outfit");
-    tspan2.setAttribute("font-size", "2rem");
-    tspan2.setAttribute("font-weight", "bold");
-
-    let tspan3 = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "tspan"
-    );
-    tspan3.setAttribute("x", "50%");
-    tspan3.setAttribute("dy", "25");
-    tspan3.setAttribute("fill", "white");
-    tspan3.setAttribute("font-family", "Outfit");
-    tspan3.setAttribute("font-size", "0.5rem");
-
-    text.appendChild(tspan1);
-    text.appendChild(tspan2);
-    text.appendChild(tspan3);
-
-    // Aggiunta del testo al container
-    svg.appendChild(text);
-
-    timerContainer.appendChild(svg);
-
-    let totalLength = 2 * Math.PI * 60;
-    circle.style.strokeDasharray = totalLength;
-
-    // Verifica se il Timer è in esecuzione
-    if (!isTimerRunning) {
-        timer = setInterval(function () {
-            countdown--;
-            let progress = countdown / seconds;
-            circle.style.strokeDashoffset = totalLength * (1 - progress);
-            // text.innerHTML = countdown;
-            tspan1.textContent = "SECONDS";
-            tspan2.textContent = countdown;
-            tspan3.textContent = "REMAINING";
-            timerContainer.append(time);
-            if (countdown === 0) {
-                time.innerHTML = "";
-                userAnswers.push(null);
-                clearInterval(timer);
-                createBenchPage();
-            }
-        }, 1000);
-        isTimerRunning = true; // Imposta la variabile a true per indicare che il Timer è in esecuzione
-    }
 }
