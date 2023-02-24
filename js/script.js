@@ -351,35 +351,6 @@ function getAnswer() {
     }
 }
 
-/* let timer; // variabile che tiene traccia del Timer
-let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
-
-// funzione timer
-function startTimer(seconds) {
-    let countdown = seconds;
-    let timerContainer = document.createElement("div");
-    timerContainer.classList.add("timer_container");
-    divConteiner.prepend(timerContainer);
-    let time = document.createElement("p");
-
-    // verifica se il Timer è in esecuzione
-    if (!isTimerRunning) {
-        timer = setInterval(function () {
-            countdown--;
-            time.innerHTML = "SECONDS " + countdown + " REMAINIG";
-            timerContainer.append(time);
-            if (countdown === 0) {
-                time.innerHTML = "";
-                conteggioDomande++;
-                userAnswers.push(null);
-                clearInterval(timer);
-                createBenchPage();
-            }
-        }, 1000);
-
-        isTimerRunning = true; // imposta la variabile a true per indicare che il Timer è in esecuzione
-    }
-} */
 
 function createBenchPage() {
     // svuota HTML precedente
@@ -408,8 +379,7 @@ function createBenchPage() {
 
 function displayResult() {
     divConteiner.innerHTML = "";
-    /* createImg();
- */
+
     let h2 = document.createElement("h2");
     h2.textContent = "Results";
     h2.classList.add("titleChart");
@@ -441,6 +411,21 @@ function displayResult() {
     percentUncorrect.append(uncorrectLabel);
     percentUncorrect.append(percent2);
     percentUncorrect.append(uncorrectNum);
+
+
+    let textInsideCircle = document.createElement('div');
+    textInsideCircle.classList.add('text-inside-circle');
+    let text1 = document.createElement('p');
+    text1.id = 'number-inside-circle';
+    let text2 = document.createElement('p');
+    text2.classList.add('remaining-text');
+    divConteiner.append(textInsideCircle);
+    textInsideCircle.append(text1);
+    textInsideCircle.append(text2);
+
+
+
+
 
     divConteiner.append(divCanvas);
     divCanvas.append(percentCorrect);
@@ -575,7 +560,7 @@ function displayResult() {
             {
                 label: "Quiz Answers",
                 data: [uncorrectAnswers, correctAnswers],
-                backgroundColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
+                backgroundColor: ["rgb(255, 99, 132)", "rgb(75, 192, 192)"],
                 hoverOffset: 15,
 
             },
@@ -591,6 +576,17 @@ function displayResult() {
     uncorrectLabel.textContent = data.labels[1];
     percent2.textContent = `${res2} %`;
     uncorrectNum.textContent = `${uncorrectAnswers}\/${domandeRandom.length} questions`;
+
+    if (res1 >= 60) {
+        text1.innerHTML = 'Congratulations you passed this exam'
+        text2.innerHTML = 'We\'ll send you the certificate in few minutes'
+    } else {
+        text1.innerHTML = 'Sorry you didn\'t pass this exam'
+        text2.innerHTML = 'Retry it'
+    }
+
+
+
 
     canvas = document.querySelector("#myChart");
     new Chart(canvas, {
