@@ -544,10 +544,7 @@ function displayResult() {
 ////JS
 let timer; // variabile che tiene traccia del Timer
 let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
-let svg =
-    '<svg id="circle" height="100" width="100" id="countdown-number"></div><svg><circle r="18" cx="20" cy="20"></circle></svg>';
-/////
-// funzione timer
+
 function startTimer(seconds) {
     let countdown = seconds;
     let timerContainer = document.createElement("div");
@@ -555,16 +552,34 @@ function startTimer(seconds) {
     tag.append(timerContainer);
     let time = document.createElement("p");
 
-    // verifica se il Timer è in esecuzione
+    // Creazione cerchio
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("height", "100");
+    svg.setAttribute("width", "100");
+    let circle = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
+    );
+    circle.setAttribute("r", "18");
+    circle.setAttribute("cx", "20");
+    circle.setAttribute("cy", "20");
+    circle.setAttribute("stroke", "#00ffff");
+    circle.setAttribute("stroke-width", "2");
+    circle.setAttribute("stroke-linecap", "round");
+    circle.setAttribute("fill", "none");
+    svg.appendChild(circle);
 
+    timerContainer.appendChild(svg);
+
+    let totalLength = 2 * Math.PI * 18;
+    circle.style.strokeDasharray = totalLength;
+
+    // Verifica se il Timer è in esecuzione
     if (!isTimerRunning) {
         timer = setInterval(function () {
-            //animazione
-            timerContainer.innerHTML = svg;
-            let circle = document.getElementById("circle");
             countdown--;
-            circle.style.strokeDashoffset = 100 - countdown;
-            ///
+            let progress = countdown / seconds;
+            circle.style.strokeDashoffset = totalLength * (1 - progress);
             time.innerHTML = "SECONDS " + countdown + " REMAINIG";
             timerContainer.append(time);
             if (countdown === 0) {
@@ -574,6 +589,6 @@ function startTimer(seconds) {
                 createBenchPage();
             }
         }, 1000);
-        isTimerRunning = true; // imposta la variabile a true per indicare che il Timer è in esecuzione
+        isTimerRunning = true; // Imposta la variabile a true per indicare che il Timer è in esecuzione
     }
 }

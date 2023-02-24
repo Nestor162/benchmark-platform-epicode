@@ -407,8 +407,8 @@ li span {
 
 /* TIMER */
 #circle {
-    stroke-dasharray: 113px;
-    stroke-dashoffset: 113px;
+    stroke-dasharray: 315px;
+    stroke-dashoffset: 0px;
     stroke-linecap: round;
     stroke-width: 2px;
     stroke: #00ffff;
