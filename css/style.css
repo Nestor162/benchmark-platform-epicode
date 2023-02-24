@@ -176,6 +176,7 @@ fieldset {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 50vh auto;
 }
 
 .answer_container {
@@ -419,8 +420,4 @@ li span {
     position: absolute;
     top: 20px;
     right: 20px;
-}
-
-tspan {
-    color: white;
 }
