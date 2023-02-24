@@ -260,14 +260,12 @@ function getRandomQuiz(n) {
     while (output.length < n) {
         // scegli un indice casuale
         let randomIndex = Math.floor(Math.random() * quizQuest.length);
-
         // se la domanda non è già stata usata, la aggiungiamo all'output
         if (!usedQuestions.includes(randomIndex)) {
             usedQuestions.push(randomIndex);
             output.push(quizQuest[randomIndex]);
         }
     }
-
     return output;
 }
 
@@ -277,6 +275,7 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+let conteggioDomande = 1;
 // Ottiene array di domande random che contiene almeno 5 domande e non piu di 10
 let domandeRandom = getRandomQuiz(randomNumber(5, 10));
 
@@ -333,11 +332,11 @@ let userAnswers = [];
 
 function getAnswer() {
     let radios = document.querySelectorAll("input[type = radio]");
-
     // ottiene risposta dall'utente e la salva in un array, poi passa alla domanda successiva
     for (let i = 0; i < radios.length; i++) {
         radios[i].addEventListener("click", function () {
             userAnswers.push(this.value);
+            conteggioDomande++;
             createBenchPage();
         });
     }
@@ -345,9 +344,6 @@ function getAnswer() {
 
 let timer; // variabile che tiene traccia del Timer
 let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
-let svg = '<svg id="circle" height="100" width="100" id="countdown-number"></div><svg><circle r="18" cx="20" cy="20"></circle></svg>'
-
-
 
 // funzione timer
 function startTimer(seconds) {
@@ -361,12 +357,7 @@ function startTimer(seconds) {
     
     if (!isTimerRunning) {
         timer = setInterval(function () {
-            //animazione
-            timerContainer.innerHTML = svg
-            let circle = document.getElementById('circle')
             countdown--;
-            circle.style.strokeDashoffset = 113 - countdown
-            ///
             time.innerHTML = "SECONDS " + countdown + " REMAINIG"
             timerContainer.append(time);
             if (countdown === 0) {
@@ -394,8 +385,11 @@ function createBenchPage() {
 
     // crea logo e sfondo
     createImg();
-
     // se si arriva all'ultima domanda passare a pagina dei risultati
     // altrimenti si stampa una nuova domanda
     indexDomanda === domandeRandom.length ? alert("risulatati") : printQuiz();
+    let questPos = document.createElement('div')
+    questPos.id += 'position'
+    questPos.innerHTML = `<span class="white">QUESTION ${conteggioDomande}</span><span class="questionSpan">/ ${domandeRandom.length}</span>`
+    tag.append(questPos)
 }

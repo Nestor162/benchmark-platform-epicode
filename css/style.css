@@ -187,3 +187,16 @@ li span {
     margin-top: 7em;
 
 }
+
+/*QUESTION SPAN*/
+#position{
+    margin-top: 40%;
+    text-align: center;
+}
+.white{
+    color: white;
+}
+
+.questionSpan{
+    color:#c2128d
+}
