@@ -16,7 +16,6 @@ body {
     width: 100%;
     height: 100%;
     margin: 0 auto;
-     
 }
 
 
@@ -158,7 +157,7 @@ fieldset div label {
     max-height: 60rem;
     display: flex;
     margin: 0 auto;
-    justify-content: space-around;
+    justify-content:space-between;
 }
 
 .titleChart {
@@ -170,10 +169,33 @@ fieldset div label {
 }
 
 .paragChart {
-    font-size: 2rem;
+    font-size:2rem;
     font-weight: 300;
     margin-bottom: 2rem;
+    color: white;
+    font-family: "Outfit", sans-serif;
 }
+
+.percentCorrect, .percentUncorrect{
+    color: white;
+    font-size: 60px;
+    font-family: "Outfit", sans-serif;
+    margin:0 auto;
+}
+
+.percentCorrect h3, .percentUncorrect h3{
+    color: white;
+    font-weight: bold;
+    margin: 0 auto;
+    
+}
+
+.percentCorrect p, .percentUncorrect p{
+    font-size: 16px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 
 .btnChart {
     font-weight: bold;

@@ -413,26 +413,28 @@ function displayResult() {
     let canvas = document.createElement("canvas");
     canvas.id = "myChart";
 
-    /*let percentCorrect = document.createElement("div");
+    let percentCorrect = document.createElement("div");
     percentCorrect.classList.add("percentCorrect");
     let correctLabel = document.createElement("h2");
-    let percent1 = document.createAttribute("p");
-    percent1.classList.add("paragChart");
+    let percent1 = document.createElement("h3");
+    let correctNum = document.createElement("p");
     percentCorrect.append(correctLabel);
     percentCorrect.append(percent1);
+    percentCorrect.append(correctNum);
 
     let percentUncorrect = document.createElement("div");
     percentUncorrect.classList.add("percentUncorrect");
     let uncorrectLabel = document.createElement("h2");
-    let percent2 = document.createAttribute("p");
-    percent2.classList.add("paragChart");
+    let percent2 = document.createElement("h3");
+    let uncorrectNum = document.createElement("p");
     percentUncorrect.append(uncorrectLabel);
-    percentUncorrect.append(percent2);*/
+    percentUncorrect.append(percent2);
+    percentUncorrect.append(uncorrectNum);
 
     divConteiner.append(divCanvas);
-    //divCanvas.append(percentCorrect);
+    divCanvas.append(percentCorrect);
     divCanvas.append(canvas);
-    //divCanvas.append(percentUncorrect);
+    divCanvas.append(percentUncorrect);
     
 
     const btnChart = document.createElement("button");
@@ -457,7 +459,7 @@ function displayResult() {
         datasets: [
             {
                 label: "Quiz Answers",
-                data: [correctAnswers, uncorrectAnswers],
+                data: [uncorrectAnswers, correctAnswers],
                 backgroundColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
                 hoverOffset: 15,
 
@@ -466,10 +468,14 @@ function displayResult() {
 
     };
 
-    /*correctLabel.textContent = data.labels[0];
-    percent1.textContent = `${correctAnswers/domandeRandom.length*100} &#37;`
+    let res1 = (Math.round(correctAnswers/domandeRandom.length*100)).toFixed(2);
+    let res2 = (Math.round(uncorrectAnswers/domandeRandom.length*100)).toFixed(2);
+    correctLabel.textContent = data.labels[0];
+    percent1.textContent = `${res1} %`;
+    correctNum.textContent = `${correctAnswers}\/${domandeRandom.length} questions`;
     uncorrectLabel.textContent = data.labels[1];
-    percent2.textContent = `${uncorrectAnswers/domandeRandom.length*100} &#37;`*/
+    percent2.textContent = `${res2} %`;
+    uncorrectNum.textContent = `${uncorrectAnswers}\/${domandeRandom.length} questions`;
 
     canvas = document.querySelector("#myChart");
     new Chart(canvas, {
