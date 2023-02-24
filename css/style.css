@@ -215,6 +215,7 @@ fieldset div label {
     border: 2px solid white;
     background: none;
     padding: 1rem 3.5rem;
+    cursor: pointer;
 }
 
 /* Domande e risposte */
