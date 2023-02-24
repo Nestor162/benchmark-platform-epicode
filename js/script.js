@@ -340,6 +340,7 @@ let userAnswers = [];
 function getAnswer() {
     let radios = document.querySelectorAll("input[type = radio]");
 
+
     // ottiene risposta dall'utente e la salva in un array, poi passa alla domanda successiva
     for (let i = 0; i < radios.length; i++) {
         radios[i].addEventListener("click", function () {
@@ -395,12 +396,13 @@ function createBenchPage() {
 
     // se si arriva all'ultima domanda passare a pagina dei risultati
     // altrimenti si stampa una nuova domanda
+
+    indexDomanda === domandeRandom.length ? displayResult() : printQuiz();
     let questPos = document.createElement('div')
     questPos.id += 'position'
     questPos.innerHTML = `<span class="white">QUESTION ${conteggioDomande}</span><span class="questionSpan">/ ${domandeRandom.length}</span>`
 
     divConteiner.appendChild(questPos)
-    indexDomanda === domandeRandom.length ? displayResult() : printQuiz();
 }
 
 
