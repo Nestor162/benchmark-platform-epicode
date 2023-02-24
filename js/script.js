@@ -571,6 +571,22 @@ function startTimer(seconds) {
 
     timerContainer.appendChild(svg);
 
+    //secondo cerchio
+    let circle2 = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
+    );
+    circle2.setAttribute("r", "60");
+    circle2.setAttribute("cx", "100");
+    circle2.setAttribute("cy", "65");
+    circle2.setAttribute("stroke", "rgba(0,0,0,0.2)");
+    circle2.setAttribute("stroke-width", "4");
+    circle2.setAttribute("stroke-linecap", "round");
+    circle2.setAttribute("fill", "none");
+    svg.appendChild(circle2);
+
+    timerContainer.appendChild(svg);
+
     // Creazione del testo
     let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
     text.setAttribute("x", "50%");
