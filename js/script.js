@@ -461,6 +461,7 @@ function displayResult() {
 
         let container = document.createElement("div");
         container.classList.add("container");
+        tag.prepend(img);
         tag.append(container);
 
         //titolo 'tell us how it's going'

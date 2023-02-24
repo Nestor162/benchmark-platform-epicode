@@ -305,10 +305,11 @@ legend {
 /* titolo nella pagina feedback*/
 
 .h1 {
-    margin: 0;
     margin-top: 4em;
     margin: 0 auto;
-    max-width: 34rem;
+    max-width: 50rem;
+    display: flex;
+    justify-content: center;
 }
 
 /*paragrafo pagina feedback*/
@@ -402,5 +403,6 @@ legend {
 
 .container {
     margin: 0 auto;
-    height: 100vh;
+    /* height: 100vh; */
+    margin-top: 5rem;
 }
