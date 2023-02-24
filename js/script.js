@@ -413,8 +413,27 @@ function displayResult() {
     let canvas = document.createElement("canvas");
     canvas.id = "myChart";
 
+    /*let percentCorrect = document.createElement("div");
+    percentCorrect.classList.add("percentCorrect");
+    let correctLabel = document.createElement("h2");
+    let percent1 = document.createAttribute("p");
+    percent1.classList.add("paragChart");
+    percentCorrect.append(correctLabel);
+    percentCorrect.append(percent1);
+
+    let percentUncorrect = document.createElement("div");
+    percentUncorrect.classList.add("percentUncorrect");
+    let uncorrectLabel = document.createElement("h2");
+    let percent2 = document.createAttribute("p");
+    percent2.classList.add("paragChart");
+    percentUncorrect.append(uncorrectLabel);
+    percentUncorrect.append(percent2);*/
+
     divConteiner.append(divCanvas);
+    //divCanvas.append(percentCorrect);
     divCanvas.append(canvas);
+    //divCanvas.append(percentUncorrect);
+    
 
     const btnChart = document.createElement("button");
     btnChart.textContent = "rate us".toUpperCase();
@@ -447,6 +466,10 @@ function displayResult() {
 
     };
 
+    /*correctLabel.textContent = data.labels[0];
+    percent1.textContent = `${correctAnswers/domandeRandom.length*100} &#37;`
+    uncorrectLabel.textContent = data.labels[1];
+    percent2.textContent = `${uncorrectAnswers/domandeRandom.length*100} &#37;`*/
 
     canvas = document.querySelector("#myChart");
     new Chart(canvas, {
