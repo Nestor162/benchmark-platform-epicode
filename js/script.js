@@ -595,7 +595,7 @@ function startTimer(seconds) {
     tspan2.setAttribute("fill", "white");
     tspan2.setAttribute("font-family", "Outfit");
     tspan2.setAttribute("font-size", "2rem");
-    // tspan2.textContent = countdown + " REMAINING";
+    tspan2.setAttribute("font-weight", "bold");
 
     let tspan3 = document.createElementNS(
         "http://www.w3.org/2000/svg",
