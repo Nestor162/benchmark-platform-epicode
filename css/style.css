@@ -339,7 +339,9 @@ legend {
 
 /*Stelline*/
 .stars {
-    margin-left: 30%;
+    margin: 0 15%;
+    display: flex;
+    justify-content: center;
 }
 
 .stars ul {
