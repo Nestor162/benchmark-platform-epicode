@@ -4,12 +4,12 @@ divConteiner.classList.add('divConteiner');
 tag.append(divConteiner);
 
 //Questa serie di funzioni crea le diverse parti della prima 'slide' (Welcome)
-function createImg() {
-    let img = document.createElement("img");
-    img.src = "assets/img/epicode_logo.png";
-    img.className += "logo";
-    divConteiner.append(img);
-}
+
+let img = document.createElement("img");
+img.src = "assets/img/epicode_logo.png";
+img.className += "logo";
+tag.prepend(img);
+
 
 function createTitle() {
     //welcome page
@@ -99,7 +99,7 @@ function createButton() {
 
 // Al caricamento della pagina si eseguono le funzioni per costruire l'HTML
 window.onload = function () {
-    createImg();
+    /* createImg(); */
     createTitle();
     createInstructions();
     createList();
@@ -279,8 +279,10 @@ function getRandomQuiz(n) {
 // si puo scegliere il minimo e il massimo
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+
 }
 
+let conteggioDomande = 1;
 // Ottiene array di domande random che contiene almeno 5 domande e non piu di 10
 let domandeRandom = getRandomQuiz(randomNumber(5, 10));
 
@@ -342,6 +344,7 @@ function getAnswer() {
     for (let i = 0; i < radios.length; i++) {
         radios[i].addEventListener("click", function () {
             userAnswers.push(this.value);
+            conteggioDomande++;
             createBenchPage();
         });
     }
@@ -355,7 +358,7 @@ function startTimer(seconds) {
     let countdown = seconds;
     let timerContainer = document.createElement("div");
     timerContainer.classList.add("timer_container");
-    divConteiner.append(timerContainer);
+    divConteiner.prepend(timerContainer);
     let time = document.createElement("p");
 
     // verifica se il Timer è in esecuzione
@@ -366,6 +369,7 @@ function startTimer(seconds) {
             timerContainer.append(time);
             if (countdown === 0) {
                 time.innerHTML = "";
+                conteggioDomande++;
                 userAnswers.push(null);
                 clearInterval(timer);
                 createBenchPage();
@@ -387,18 +391,23 @@ function createBenchPage() {
     }
 
     // crea logo e sfondo
-    createImg();
+    /* createImg(); */
 
     // se si arriva all'ultima domanda passare a pagina dei risultati
     // altrimenti si stampa una nuova domanda
+    let questPos = document.createElement('div')
+    questPos.id += 'position'
+    questPos.innerHTML = `<span class="white">QUESTION ${conteggioDomande}</span><span class="questionSpan">/ ${domandeRandom.length}</span>`
+
+    divConteiner.appendChild(questPos)
     indexDomanda === domandeRandom.length ? displayResult() : printQuiz();
 }
 
 
 function displayResult() {
     divConteiner.innerHTML = "";
-    createImg();
-
+    /* createImg();
+ */
     let h2 = document.createElement("h2");
     h2.textContent = "Results";
     h2.classList.add("titleChart");
@@ -435,7 +444,7 @@ function displayResult() {
     divCanvas.append(percentCorrect);
     divCanvas.append(canvas);
     divCanvas.append(percentUncorrect);
-    
+
 
     const btnChart = document.createElement("button");
     btnChart.textContent = "rate us".toUpperCase();
@@ -454,6 +463,13 @@ function displayResult() {
     }
     let uncorrectAnswers = domandeRandom.length - correctAnswers;
 
+
+
+
+
+
+
+
     const data = {
         labels: ["Correct", "Wrong"],
         datasets: [
@@ -468,8 +484,8 @@ function displayResult() {
 
     };
 
-    let res1 = (Math.round(correctAnswers/domandeRandom.length*100)).toFixed(2);
-    let res2 = (Math.round(uncorrectAnswers/domandeRandom.length*100)).toFixed(2);
+    let res1 = (Math.round(correctAnswers / domandeRandom.length * 100)).toFixed(2);
+    let res2 = (Math.round(uncorrectAnswers / domandeRandom.length * 100)).toFixed(2);
     correctLabel.textContent = data.labels[0];
     percent1.textContent = `${res1} %`;
     correctNum.textContent = `${correctAnswers}\/${domandeRandom.length} questions`;
@@ -482,13 +498,17 @@ function displayResult() {
         type: "doughnut",
         data: data,
         options: {
+
+            cutout: '73%',
             borderWidth: 0,
             borderRadius: 5,
             hoverBorderWidth: 0,
+
             plugins: {
                 legend: {
                     display: false,
                 },
+                centerText: 'ciao',
                 tooltip: {
                     enabled: false,
                 },
@@ -500,8 +520,11 @@ function displayResult() {
                     offsetY: 5,
                 }
             },
-            cutout: '73%',
+
+
+
         },
+
 
     });
 
