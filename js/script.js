@@ -350,8 +350,8 @@ function getAnswer() {
     }
 }
 
-let timer; // variabile che tiene traccia del Timer
-let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
+/* let timer; // variabile che tiene traccia del Timer
+let isTimerRunning = false; */ // variabile che indica se il Timer è in esecuzione o fermato
 
 // funzione timer
 function startTimer(seconds) {
@@ -528,4 +528,119 @@ function displayResult() {
 
     });
 
+}
+
+let timer; // variabile che tiene traccia del Timer
+let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
+
+function startTimer(seconds) {
+    let countdown = seconds;
+    let timerContainer = document.createElement("div");
+    timerContainer.classList.add("timer_container");
+    tag.append(timerContainer);
+    let time = document.createElement("p");
+
+    // Creazione cerchio
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("height", "130");
+    svg.setAttribute("width", "200");
+    let circle = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
+    );
+    circle.setAttribute("r", "60");
+    circle.setAttribute("cx", "100");
+    circle.setAttribute("cy", "65");
+    circle.setAttribute("stroke", "#00ffff");
+    circle.setAttribute("stroke-width", "4");
+    circle.setAttribute("stroke-linecap", "round");
+    circle.setAttribute("fill", "none");
+    svg.appendChild(circle);
+
+    timerContainer.appendChild(svg);
+
+    //secondo cerchio
+    let circle2 = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
+    );
+    circle2.setAttribute("r", "60");
+    circle2.setAttribute("cx", "100");
+    circle2.setAttribute("cy", "65");
+    circle2.setAttribute("stroke", "rgba(0,0,0,0.2)");
+    circle2.setAttribute("stroke-width", "4");
+    circle2.setAttribute("stroke-linecap", "round");
+    circle2.setAttribute("fill", "none");
+    svg.appendChild(circle2);
+
+    timerContainer.appendChild(svg);
+
+    // Creazione del testo
+    let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute("x", "50%");
+    text.setAttribute("y", "50%");
+    text.setAttribute("text-anchor", "middle");
+    let tspan1 = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "tspan"
+    );
+    tspan1.setAttribute("x", "50%");
+    tspan1.setAttribute("dy", "-30");
+    tspan1.setAttribute("fill", "white");
+    tspan1.setAttribute("font-family", "Outfit");
+    tspan1.setAttribute("font-size", "0.5rem");
+
+    let tspan2 = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "tspan"
+    );
+    tspan2.setAttribute("x", "50%");
+    tspan2.setAttribute("dy", "40");
+    tspan2.setAttribute("fill", "white");
+    tspan2.setAttribute("font-family", "Outfit");
+    tspan2.setAttribute("font-size", "2rem");
+    tspan2.setAttribute("font-weight", "bold");
+
+    let tspan3 = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "tspan"
+    );
+    tspan3.setAttribute("x", "50%");
+    tspan3.setAttribute("dy", "25");
+    tspan3.setAttribute("fill", "white");
+    tspan3.setAttribute("font-family", "Outfit");
+    tspan3.setAttribute("font-size", "0.5rem");
+
+    text.appendChild(tspan1);
+    text.appendChild(tspan2);
+    text.appendChild(tspan3);
+
+    // Aggiunta del testo al container
+    svg.appendChild(text);
+
+    timerContainer.appendChild(svg);
+
+    let totalLength = 2 * Math.PI * 60;
+    circle.style.strokeDasharray = totalLength;
+
+    // Verifica se il Timer è in esecuzione
+    if (!isTimerRunning) {
+        timer = setInterval(function () {
+            countdown--;
+            let progress = countdown / seconds;
+            circle.style.strokeDashoffset = totalLength * (1 - progress);
+            // text.innerHTML = countdown;
+            tspan1.textContent = "SECONDS";
+            tspan2.textContent = countdown;
+            tspan3.textContent = "REMAINING";
+            timerContainer.append(time);
+            if (countdown === 0) {
+                time.innerHTML = "";
+                userAnswers.push(null);
+                clearInterval(timer);
+                createBenchPage();
+            }
+        }, 1000);
+        isTimerRunning = true; // Imposta la variabile a true per indicare che il Timer è in esecuzione
+    }
 }
