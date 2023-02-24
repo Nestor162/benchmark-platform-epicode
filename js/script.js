@@ -344,34 +344,34 @@ function getAnswer() {
     }
 }
 
-let timer; // variabile che tiene traccia del Timer
-let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
+// let timer; // variabile che tiene traccia del Timer
+// let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
 
-// funzione timer
-function startTimer(seconds) {
-    let countdown = seconds;
-    let timerContainer = document.createElement("div");
-    timerContainer.classList.add("timer_container");
-    tag.append(timerContainer);
-    let time = document.createElement("p");
+// // funzione timer
+// function startTimer(seconds) {
+//     let countdown = seconds;
+//     let timerContainer = document.createElement("div");
+//     timerContainer.classList.add("timer_container");
+//     tag.append(timerContainer);
+//     let time = document.createElement("p");
 
-    // verifica se il Timer è in esecuzione
-    if (!isTimerRunning) {
-        timer = setInterval(function () {
-            countdown--;
-            time.innerHTML = "SECONDS " + countdown + " REMAINIG";
-            timerContainer.append(time);
-            if (countdown === 0) {
-                time.innerHTML = "";
-                userAnswers.push(null);
-                clearInterval(timer);
-                createBenchPage();
-            }
-        }, 1000);
+//     // verifica se il Timer è in esecuzione
+//     if (!isTimerRunning) {
+//         timer = setInterval(function () {
+//             countdown--;
+//             time.innerHTML = "SECONDS " + countdown + " REMAINIG";
+//             timerContainer.append(time);
+//             if (countdown === 0) {
+//                 time.innerHTML = "";
+//                 userAnswers.push(null);
+//                 clearInterval(timer);
+//                 createBenchPage();
+//             }
+//         }, 1000);
 
-        isTimerRunning = true; // imposta la variabile a true per indicare che il Timer è in esecuzione
-    }
-}
+//         isTimerRunning = true; // imposta la variabile a true per indicare che il Timer è in esecuzione
+//     }
+// }
 
 function createBenchPage() {
     // svuota HTML precedente
@@ -417,6 +417,98 @@ function displayResult() {
     btnChart.textContent = "rate us".toUpperCase();
     btnChart.classList.add("btnChart");
     tag.appendChild(btnChart);
+    btnChart.addEventListener("click", function () {
+        // svuota HTML precedente
+        const main = document.createElement("div");
+        main.className += "stars";
+        const tag = document.querySelector("body");
+        tag.innerHTML = "";
+
+        //titolo 'tell us how it's going'
+
+        const h1 = createElements(tag, "h1", "h1");
+        h1.innerHTML = "Tell us how it's going";
+
+        //paragrafo
+
+        const p = createElements(tag, "h3", "p");
+        p.innerHTML =
+            "From 0 to 10, how likely are you to recommend EPICODE to a friend o a colleague?";
+
+        //ciclo stelline
+        tag.append(main);
+
+        for (let x = 0; x < 10; x++) {
+            const star = createElements(main, "img", "star");
+            star.src = "../assets/img/star.svg";
+            star.starValue = x + 1;
+            ["mouseover", "mouseout", "click"].forEach((ele) => {
+                star.addEventListener(ele, starRate);
+            });
+        }
+
+        function starRate(e) {
+            const eventType = e.type;
+            const parent = e.target.closest(".stars");
+            const colorStars = parent.querySelectorAll(".star");
+            const valutazione = e.target.starValue;
+            if (eventType === "mouseover") {
+                colorRate(colorStars);
+            }
+            if (eventType === "click") {
+                localStorage.setItem("Valutazione", valutazione);
+            }
+
+            colorRate(colorStars, e.target.starValue);
+        }
+
+        function colorRate(colorStars, val) {
+            colorStars.forEach((star, index) => {
+                if (index < val) {
+                    star.classList.add("starColorHover");
+                } else {
+                    star.classList.remove("starColorHover");
+                }
+            });
+        }
+
+        //invito a lasciare una valutazione
+
+        const pValutazione = createElements(tag, "h3", "pValutazione");
+        pValutazione.innerHTML =
+            "Leave us an open feedback about your experience so far";
+
+        //Input
+        const inputText = document.createElement("div");
+        inputText.className += "inputText";
+        tag.append(inputText);
+
+        const input = createElements(inputText, "input", "inp");
+        const inputValue = document.querySelector(".inp");
+        input.type = "text";
+        input.placeholder = "Write your comment here";
+
+        //bottone sotto
+
+        const button = createElements(tag, "button", "button");
+        button.innerHTML = "more info".toUpperCase();
+        button.id += "moreInfoPosition";
+
+        button.addEventListener("click", function () {
+            localStorage.setItem("Commento", inputValue.value);
+            console.log(inputValue.value);
+            localStorage.getItem(inputValue.value);
+        });
+
+        //funzione per creare elementi
+
+        function createElements(parent, element, myClass) {
+            const el = document.createElement(element);
+            el.classList.add(myClass);
+            parent.append(el);
+            return el;
+        }
+    });
 
     let correctAnswers = 0;
     console.log(userAnswers);
@@ -447,4 +539,41 @@ function displayResult() {
         type: "doughnut",
         data: data,
     });
+}
+
+////JS
+let timer; // variabile che tiene traccia del Timer
+let isTimerRunning = false; // variabile che indica se il Timer è in esecuzione o fermato
+let svg =
+    '<svg id="circle" height="100" width="100" id="countdown-number"></div><svg><circle r="18" cx="20" cy="20"></circle></svg>';
+/////
+// funzione timer
+function startTimer(seconds) {
+    let countdown = seconds;
+    let timerContainer = document.createElement("div");
+    timerContainer.classList.add("timer_container");
+    tag.append(timerContainer);
+    let time = document.createElement("p");
+
+    // verifica se il Timer è in esecuzione
+
+    if (!isTimerRunning) {
+        timer = setInterval(function () {
+            //animazione
+            timerContainer.innerHTML = svg;
+            let circle = document.getElementById("circle");
+            countdown--;
+            circle.style.strokeDashoffset = 100 - countdown;
+            ///
+            time.innerHTML = "SECONDS " + countdown + " REMAINIG";
+            timerContainer.append(time);
+            if (countdown === 0) {
+                time.innerHTML = "";
+                userAnswers.push(null);
+                clearInterval(timer);
+                createBenchPage();
+            }
+        }, 1000);
+        isTimerRunning = true; // imposta la variabile a true per indicare che il Timer è in esecuzione
+    }
 }
