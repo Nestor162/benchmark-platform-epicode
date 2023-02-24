@@ -362,6 +362,7 @@ function startTimer(seconds) {
             timerContainer.append(time);
             if (countdown === 0) {
                 time.innerHTML = "";
+                conteggioDomande++;
                 userAnswers.push(null);
                 clearInterval(timer);
                 createBenchPage();
