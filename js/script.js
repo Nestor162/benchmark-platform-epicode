@@ -424,19 +424,23 @@ function displayResult() {
         const tag = document.querySelector("body");
         tag.innerHTML = "";
 
+        let container = document.createElement("div");
+        container.classList.add("container");
+        tag.append(container);
+
         //titolo 'tell us how it's going'
 
-        const h1 = createElements(tag, "h1", "h1");
+        const h1 = createElements(container, "h1", "h1");
         h1.innerHTML = "Tell us how it's going";
 
         //paragrafo
 
-        const p = createElements(tag, "h3", "p");
+        const p = createElements(container, "h3", "p");
         p.innerHTML =
             "From 0 to 10, how likely are you to recommend EPICODE to a friend o a colleague?";
 
         //ciclo stelline
-        tag.append(main);
+        container.append(main);
 
         for (let x = 0; x < 10; x++) {
             const star = createElements(main, "img", "star");
@@ -474,14 +478,14 @@ function displayResult() {
 
         //invito a lasciare una valutazione
 
-        const pValutazione = createElements(tag, "h3", "pValutazione");
+        const pValutazione = createElements(container, "h3", "pValutazione");
         pValutazione.innerHTML =
             "Leave us an open feedback about your experience so far";
 
         //Input
         const inputText = document.createElement("div");
         inputText.className += "inputText";
-        tag.append(inputText);
+        container.append(inputText);
 
         const input = createElements(inputText, "input", "inp");
         const inputValue = document.querySelector(".inp");
@@ -490,7 +494,7 @@ function displayResult() {
 
         //bottone sotto
 
-        const button = createElements(tag, "button", "button");
+        const button = createElements(container, "button", "button");
         button.innerHTML = "more info".toUpperCase();
         button.id += "moreInfoPosition";
 
@@ -511,9 +515,9 @@ function displayResult() {
     });
 
     let correctAnswers = 0;
-    console.log(userAnswers);
-    console.log(domandeRandom);
-    console.log(correctAnswers);
+    // console.log(userAnswers);
+    // console.log(domandeRandom);
+    // console.log(correctAnswers);
 
     for (let i = 0; i < domandeRandom.length; i++) {
         if (userAnswers[i] === domandeRandom[i].correct) {

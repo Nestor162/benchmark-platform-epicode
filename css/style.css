@@ -333,9 +333,9 @@ li span {
 
 .h1 {
     margin: 0;
-    margin-left: 7.5em;
     margin-top: 4em;
-    max-width: none;
+    margin: 0 auto;
+    max-width: 34rem;
 }
 
 /*paragrafo pagina feedback*/
@@ -420,4 +420,9 @@ li span {
     position: absolute;
     top: 20px;
     right: 20px;
+}
+
+.container {
+    margin: 0 auto;
+    height: 100vh;
 }
