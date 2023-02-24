@@ -151,7 +151,7 @@ let quiz2 = new Quiz(
     "Science: Computers",
     "multiple",
     "easy",
-    "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+    "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     "Final",
     ["Static", "Private", "Public"],
     10
