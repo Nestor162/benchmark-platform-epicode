@@ -554,24 +554,69 @@ function startTimer(seconds) {
 
     // Creazione cerchio
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("height", "100");
-    svg.setAttribute("width", "100");
+    svg.setAttribute("height", "130");
+    svg.setAttribute("width", "200");
     let circle = document.createElementNS(
         "http://www.w3.org/2000/svg",
         "circle"
     );
-    circle.setAttribute("r", "18");
-    circle.setAttribute("cx", "20");
-    circle.setAttribute("cy", "20");
+    circle.setAttribute("r", "60");
+    circle.setAttribute("cx", "100");
+    circle.setAttribute("cy", "65");
     circle.setAttribute("stroke", "#00ffff");
-    circle.setAttribute("stroke-width", "2");
+    circle.setAttribute("stroke-width", "4");
     circle.setAttribute("stroke-linecap", "round");
     circle.setAttribute("fill", "none");
     svg.appendChild(circle);
 
     timerContainer.appendChild(svg);
 
-    let totalLength = 2 * Math.PI * 18;
+    // Creazione del testo
+    let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute("x", "50%");
+    text.setAttribute("y", "50%");
+    text.setAttribute("text-anchor", "middle");
+    let tspan1 = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "tspan"
+    );
+    tspan1.setAttribute("x", "50%");
+    tspan1.setAttribute("dy", "-30");
+    tspan1.setAttribute("fill", "white");
+    tspan1.setAttribute("font-family", "Outfit");
+    tspan1.setAttribute("font-size", "0.5rem");
+
+    let tspan2 = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "tspan"
+    );
+    tspan2.setAttribute("x", "50%");
+    tspan2.setAttribute("dy", "40");
+    tspan2.setAttribute("fill", "white");
+    tspan2.setAttribute("font-family", "Outfit");
+    tspan2.setAttribute("font-size", "2rem");
+    // tspan2.textContent = countdown + " REMAINING";
+
+    let tspan3 = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "tspan"
+    );
+    tspan3.setAttribute("x", "50%");
+    tspan3.setAttribute("dy", "25");
+    tspan3.setAttribute("fill", "white");
+    tspan3.setAttribute("font-family", "Outfit");
+    tspan3.setAttribute("font-size", "0.5rem");
+
+    text.appendChild(tspan1);
+    text.appendChild(tspan2);
+    text.appendChild(tspan3);
+
+    // Aggiunta del testo al container
+    svg.appendChild(text);
+
+    timerContainer.appendChild(svg);
+
+    let totalLength = 2 * Math.PI * 60;
     circle.style.strokeDasharray = totalLength;
 
     // Verifica se il Timer è in esecuzione
@@ -580,7 +625,10 @@ function startTimer(seconds) {
             countdown--;
             let progress = countdown / seconds;
             circle.style.strokeDashoffset = totalLength * (1 - progress);
-            time.innerHTML = "SECONDS " + countdown + " REMAINIG";
+            // text.innerHTML = countdown;
+            tspan1.textContent = "SECONDS";
+            tspan2.textContent = countdown;
+            tspan3.textContent = "REMAINING";
             timerContainer.append(time);
             if (countdown === 0) {
                 time.innerHTML = "";

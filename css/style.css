@@ -414,3 +414,13 @@ li span {
     stroke: #00ffff;
     fill: none;
 }
+
+.timer_container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+tspan {
+    color: white;
+}
