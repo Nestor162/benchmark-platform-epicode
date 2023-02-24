@@ -419,6 +419,8 @@ legend {
     flex-direction: column;
     font-family: "Roboto", sans-serif;
     color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
 }
 
@@ -429,5 +431,5 @@ legend {
 
 .remaining-text {
     font-weight: 400;
-    font-size: 0.7rem;
+    font-size: 1.2rem;
 }
